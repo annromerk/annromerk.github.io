@@ -84,14 +84,6 @@ img { max-width: 100%; display: block; }
   margin: 0 0 12px;
 }
 
-.hero-actions {
-  margin-top: 28px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 48px;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -110,40 +102,6 @@ img { max-width: 100%; display: block; }
   color: #fff;
 }
 .btn-primary:hover { background: var(--accent-dark); }
-
-.btn-secondary {
-  background: transparent;
-  color: var(--text);
-  border-color: var(--border);
-}
-.btn-secondary:hover { border-color: var(--text-dim); }
-
-.hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  list-style: none;
-  margin: 0;
-  padding: 28px 0 0;
-  border-top: 1px solid var(--border);
-}
-
-.hero-stats li {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.hero-stats strong {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--accent);
-}
-
-.hero-stats span {
-  font-size: 0.85rem;
-  color: var(--text-dim);
-}
 
 /* Sections */
 .section { padding: 80px 0; }
@@ -367,8 +325,14 @@ img { max-width: 100%; display: block; }
 .org-badge--icon {
   background: var(--bg);
   border: 1px solid var(--border);
+  overflow: hidden;
 }
 .org-badge--icon svg { width: 22px; height: 22px; }
+.org-badge--icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .timeline-body h3 {
   margin: 0 0 2px;
