@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthony Romero | Mechatronics & Robotics Apprentice Candidate</title>
+<meta name="description" content="Anthony Romero, a mechatronics and robotics apprentice candidate with hands-on MHE troubleshooting skills and a track record in warehouse operations, safety, and construction trades.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">Mechatronics &amp; Robotics Apprentice Candidate</p>
+      <h1>Anthony Romero</h1>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="assets/resume/Anthony_Romero_Resume.docx" download>Download Résumé</a>
+        <a class="btn btn-secondary" href="https://github.com/anromerk" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong>500–550</strong><span>units/hr, 25% above site average</span></li>
+        <li><strong>4</strong><span>Safe &amp; Secure awards</span></li>
+        <li><strong>1</strong><span>OSHA violation caught &amp; closed</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <p class="about-text">
+        I got my start in construction trades and warehouse work, and got good at catching problems early:
+        a safety hazard, a worn part, a tool about to fail. That's what pulled me toward mechatronics.
+      </p>
+      <p class="about-text">
+        In 2026 I taught myself the basics and built a working fault-simulation trainer to prove I could take
+        it from theory to actual hardware. Now I'm looking for a Mechatronics &amp; Robotics Apprenticeship
+        or similar maintenance role, learning under experienced RME technicians.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="project">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-stack">
+
+        <div class="project-card">
+          <div class="project-media">
+            <video class="project-video" controls preload="metadata" playsinline>
+              <source src="assets/video/pi-trainer-demo.mp4" type="video/mp4">
+              Your browser doesn't support embedded video. <a href="assets/video/pi-trainer-demo.mp4">Download the demo video</a> instead.
+            </video>
+          </div>
+          <div class="project-body">
+            <p class="project-tag">Self-Directed Technical Project · Jun–Jul 2026</p>
+            <h3>Raspberry Pi Pico Fault-Simulation Trainer</h3>
+            <p>
+              I studied mechatronics fundamentals on my own (electrical basics, sensors, control logic) and
+              built a physical trainer to put that knowledge into practice: a control panel that simulates the
+              kind of conveyor faults I encounter on the warehouse floor, so I could learn to detect and diagnose
+              them the way a maintenance technician would.
+            </p>
+            <ul class="project-points">
+              <li>Wired a Raspberry Pi Pico control panel with status LEDs, a buzzer alarm, and Start/Stop/Reset/Jam switches, using color-coded GPIO, ground, and power wiring across a breadboard</li>
+              <li>Programmed <strong>fault-interlock state machine logic</strong> (Stopped → Running → Fault) that locks out Start and Stop once a fault trips, requiring Reset to clear it. This <strong>mirrors real equipment lockout behavior</strong> and includes a 2-second hold-to-trigger debounce on the jam input</li>
+              <li>Built entirely outside of coursework, driven by direct experience with MHE (material handling equipment) on the job</li>
+            </ul>
+
+            <div class="how-it-works">
+              <p class="how-it-works-label">How it works</p>
+              <ol>
+                <li>Power on and the system boots into <strong>Stopped</strong>. Nothing moves until Start is pressed.</li>
+                <li>Press Start and it moves to <strong>Running</strong>: the green and yellow LEDs come on, simulating the conveyor moving.</li>
+                <li>Holding the Jam switch for 2 seconds trips a fault. That hold time is on purpose, so a quick bump doesn't set it off, the same way a real sensor signal has to hold steady before it's trusted.</li>
+                <li>Once faulted, the red LED and buzzer turn on, and Start and Stop are both locked out until the fault is cleared.</li>
+                <li>Pressing Reset is the only way out: it clears the fault and drops the system back to Stopped, ready to go again.</li>
+              </ol>
+              <p class="how-it-works-note">That's the same pattern real MHE controls use: detect the fault, alarm on it, and lock the equipment down until someone deals with it.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card project-card--text">
+          <div class="project-body">
+            <p class="project-tag">Personal Project · Aug 2025</p>
+            <h3>Wageless: Job Alert Browser Extension</h3>
+            <p>
+              Built a Chrome/Firefox extension that watches Amazon job listing pages and pings a Discord
+              channel the moment new positions open up, so I'd know before a listing filled instead of
+              checking manually.
+            </p>
+            <ul class="project-points">
+              <li>Wrote a background script and content script to monitor job pages and detect new listings in real time</li>
+              <li>Wired up Discord webhook notifications with configurable mentions (user, role, or @everyone)</li>
+              <li>Released it under an MIT license so anyone job hunting could use it</li>
+            </ul>
+            <div class="project-meta">
+              <span class="meta-chip">JavaScript</span>
+              <span class="meta-chip">Browser Extension</span>
+              <span class="meta-chip">Discord Webhooks</span>
+            </div>
+            <a class="project-link" href="https://github.com/anromerk/wageless" target="_blank" rel="noopener">View repository on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card project-card--text">
+          <div class="project-body">
+            <p class="project-tag">Team Hackathon · freeCodeCamp Summer Hackathon 2025</p>
+            <h3>Yellow Packet: Pet Adoption Platform</h3>
+            <p>
+              Joined a 14-person team building a full-stack pet adoption platform in freeCodeCamp's 2025 Summer
+              Hackathon, where users could browse adoptable pets and shelters through a shared web app. Took
+              ownership of the login page, designing it and building it in React, while learning Git well
+              enough to work inside a large, distributed team.
+            </p>
+            <div class="project-meta">
+              <span class="meta-chip">14-person team</span>
+              <span class="meta-chip">React · Node/Express · MongoDB · Docker</span>
+            </div>
+            <a class="project-link" href="https://github.com/nhcarrigan-2025-hackathon/yellow-packet" target="_blank" rel="noopener">View repository on GitHub →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="recommendation">
+    <div class="container">
+      <h2 class="section-title">Recommendation</h2>
+      <blockquote class="testimonial">
+        <p>"He took ownership of the login page design and truly excelled in this area, diving deep into
+          design principles and creating something he could be genuinely proud of. Despite facing significant
+          time management challenges due to his demanding role at Amazon during Prime Day, Anthony remained
+          committed to the project and continued pushing forward. He also tackled one of his biggest growth
+          areas&mdash;mastering Git&mdash;showing remarkable determination to expand his technical toolkit
+          even when time was limited."</p>
+        <cite>Naomi Carrigan, Senior Software Engineer &amp; Founder of NHCarrigan, hackathon mentor. LinkedIn recommendation, July 2025.</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <ol class="timeline">
+
+        <li class="timeline-item">
+          <div class="timeline-when">
+            <span class="timeline-date">Nov 2024 – Present</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Warehouse Associate <span class="dim">(Seasonal to Regular)</span></h3>
+            <p class="timeline-org">Amazon.com Services LLC</p>
+            <ul>
+              <li>Identified and escalated a blocked fire extinguisher OSHA violation (29 CFR 1910.157(c)(1)); closed by WHS/RME, earning <strong>4 Safe and Secure awards and a Bias for Action pin</strong></li>
+              <li>Spotted a warehouse-wide conveyor speed issue and reported the resulting mechanical wear <strong>before it caused equipment failure</strong></li>
+              <li>Developed a U-boat pre-staging method that <strong>cut end-of-shift compaction from 10+ U-boats to zero</strong>, freeing up 3 associates for other workflow</li>
+              <li>Verified scanners and handheld devices were functional before every shift, <strong>preventing workflow disruption</strong></li>
+              <li>Sustained <strong>500–550 units/hour in stow, 25% above site average</strong>, across flexible shifts including nights and weekends</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-when">
+            <span class="timeline-date">Aug – Nov 2024</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Construction Intern / Trade Trainee</h3>
+            <p class="timeline-org">Sun Country Builders</p>
+            <ul>
+              <li>Assisted with framing and drywall installation on Azure Apartments, an <strong>87-unit affordable housing conversion</strong> in Anaheim</li>
+              <li>Read blueprints and took field measurements, <strong>flagging code and quality issues before sign-off</strong> during job site walkarounds with the superintendent</li>
+              <li>Inspected and maintained tools before each use, including blade changes and ladder/scaffolding checks, per site safety protocol</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-when">
+            <span class="timeline-date">Feb – May 2024</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Construction Trades Trainee <span class="dim">(Vocational Coursework)</span></h3>
+            <p class="timeline-org">Hope Builders</p>
+            <ul>
+              <li>Completed full-time construction trades training covering carpentry, electrical basics, safety, and materials handling</li>
+              <li>Earned <strong>OSHA-10 and Heartsaver CPR/AED</strong> certifications</li>
+              <li>Served as <strong>team lead</strong> on a carpentry demolition project, directing task sequencing among trainees to stay on schedule</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-when">
+            <span class="timeline-date">Aug 2023 – Jan 2024</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Handyman Assistant <span class="dim">(Residential Installation &amp; Repair)</span></h3>
+            <p class="timeline-org">Independent Residential Work</p>
+            <ul>
+              <li>Completed carpentry, repair, and installation jobs across multiple residential clients, <strong>managing scheduling and safety independently</strong></li>
+              <li>Troubleshot and resolved issues with door hardware, light fixtures, and other household components</li>
+            </ul>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+
+        <div class="skill-group">
+          <h3>Maintenance &amp; Troubleshooting</h3>
+          <ul class="tag-list">
+            <li>Mechanical &amp; Electrical Troubleshooting</li>
+            <li>Equipment Fault Diagnosis</li>
+            <li>Conveyor &amp; MHE Systems</li>
+            <li>Preventative &amp; Predictive Maintenance</li>
+            <li>Blueprint Reading &amp; Measurement Interpretation</li>
+            <li>Tool &amp; Equipment Maintenance</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>Safety &amp; Compliance</h3>
+          <ul class="tag-list">
+            <li>Safety Hazard Identification &amp; Reporting</li>
+            <li>SOP Compliance &amp; Verification</li>
+            <li>Operational Excellence</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>Operations</h3>
+          <ul class="tag-list">
+            <li>Metrics Tracking &amp; Reporting</li>
+            <li>Workflow &amp; Production Goal Management</li>
+            <li>Work Area Organization</li>
+            <li>Flexible Scheduling &amp; Overtime</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>Applied Thinking</h3>
+          <ul class="tag-list">
+            <li>Independent Judgment &amp; Decision Making</li>
+            <li>Problem Solving &amp; Analytical Thinking</li>
+            <li>Cross-Functional Communication</li>
+            <li>Microsoft Office (Word, Excel, Outlook)</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="certifications">
+    <div class="container">
+      <h2 class="section-title">Certifications &amp; Education</h2>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <h3>OSHA-10 Construction Safety and Health</h3>
+          <p>Hope Builders</p>
+        </div>
+        <div class="cert-card">
+          <h3>Heartsaver First Aid CPR AED</h3>
+          <p>American Heart Association, via CPR Training Center, Alhambra</p>
+        </div>
+        <div class="cert-card">
+          <h3>Total Productive Maintenance (TPM)</h3>
+          <p>Preventive and reliability-centered maintenance strategies, via Alison</p>
+        </div>
+        <div class="cert-card">
+          <h3>High School Diploma / GED</h3>
+          <p>High School Equivalency, completed 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> Anthony Romero</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
