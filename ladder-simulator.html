@@ -24,8 +24,8 @@
     <div class="container">
       <h1>Ladder Logic Simulator</h1>
       <p>
-        A self-directed learning project: a browser-based simulator that models how a real PLC
-        (Programmable Logic Controller) evaluates ladder logic, built to translate the fault-interlock
+        This is a self-directed learning project, a browser-based simulator that models how a real PLC
+        (Programmable Logic Controller) evaluates ladder logic. I built it to translate the fault-interlock
         state machine from my <a href="index.html#project">Raspberry Pi Pico trainer</a> into industry-standard
         ladder notation.
       </p>
@@ -46,7 +46,7 @@
 
       <div class="demo-row">
         <button class="btn btn-primary" id="btn-demo">&#9654; Watch the fault-lockout demo</button>
-        <p class="demo-status" id="demo-status">Starts the line, trips a fault, and resets it automatically &mdash; no clicking required.</p>
+        <p class="demo-status" id="demo-status">Starts the line, trips a fault, and resets it automatically. No clicking required.</p>
       </div>
 
       <div class="status-banner" id="status-banner">
@@ -59,7 +59,7 @@
 
       <p class="panel-note">
         The diagram and buttons below are the actual technical simulation, shown in real industrial notation.
-        You don't need to read it to follow along &mdash; the status above tells you what's happening in plain English.
+        You don't need to read it to follow along. The status above tells you what's happening in plain English.
       </p>
 
       <div class="panel-row">
@@ -93,9 +93,9 @@
       </div>
 
       <div class="ladder-legend">
-        <span class="legend-item"><span class="legend-sym">| |</span>a switch (contact) &mdash; lets power through when its condition is met</span>
-        <span class="legend-item"><span class="legend-sym">|/|</span>a switch that's normally closed &mdash; opens when triggered (used for Stop, Fault, Reset)</span>
-        <span class="legend-item"><span class="legend-sym">( )</span>an output (coil) &mdash; turns on when power reaches it</span>
+        <span class="legend-item"><span class="legend-sym">| |</span>a switch (contact) that lets power through when its condition is met</span>
+        <span class="legend-item"><span class="legend-sym">|/|</span>a switch that's normally closed and opens when triggered (used for Stop, Fault, Reset)</span>
+        <span class="legend-item"><span class="legend-sym">( )</span>an output (coil) that turns on when power reaches it</span>
         <span class="legend-item"><span class="legend-dot legend-dot--accent"></span>power flowing right now</span>
         <span class="legend-item"><span class="legend-dot legend-dot--red"></span>the fault path</span>
       </div>
@@ -122,7 +122,7 @@
       <div class="explainer-grid">
 
         <div class="explainer-card">
-          <h3>Rung 1 &mdash; Fault latch</h3>
+          <h3>Rung 1: Fault latch</h3>
           <p>
             The Jam contact sets the Fault coil, and a seal-in contact (Fault, in parallel with Jam) keeps
             it energized on its own even after Jam clears, exactly like the Pico's fault-interlock logic
@@ -134,12 +134,12 @@
         </div>
 
         <div class="explainer-card">
-          <h3>Rung 2 &mdash; Start/Stop seal-in with fault interlock</h3>
+          <h3>Rung 2: Start/Stop seal-in with fault interlock</h3>
           <p>
-            This is the classic motor-starter circuit: Start energizes Run, a seal-in contact (Run) keeps it
-            energized after Start is released, and Stop breaks the seal. The Fault contact in series gates
-            the whole rung off the moment Fault is set, the same lockout the Pico enforced by disabling its
-            Start/Stop switch reads whenever <code>state == "Fault"</code>.
+            This is the classic motor-starter circuit. Start energizes Run, a seal-in contact (Run) keeps it
+            energized after Start is released, and Stop breaks the seal. The Fault contact in series cuts
+            the whole rung the moment Fault is set, the same lockout the Pico enforced by disabling Start
+            and Stop whenever <code>state == "Fault"</code>.
           </p>
           <code>if (start or run) and not stop and not fault:
     run = True
@@ -148,9 +148,9 @@ else:
         </div>
 
         <div class="explainer-card">
-          <h3>Rung 3 &mdash; Motor output</h3>
+          <h3>Rung 3: Motor output</h3>
           <p>
-            A direct output: Run energizes the Motor coil, mirroring the Pico's status LEDs turning on when
+            A direct output. Run energizes the Motor coil, mirroring the Pico's status LEDs turning on when
             it entered the Running state.
           </p>
           <code>motor = run</code>
@@ -161,7 +161,7 @@ else:
           <p>
             The Pico trainer requires holding the Jam switch for 2 seconds before it counts as a fault
             (debounce), so a quick bump doesn't trip it. A real PLC would do that with a timer instruction
-            (TON). Left out here on purpose to keep the diagram focused on scan-cycle behavior and
+            (TON). I left that out here on purpose, to keep the diagram focused on scan-cycle behavior and
             NO/NC contact logic, the two core concepts this project is built to demonstrate.
           </p>
         </div>

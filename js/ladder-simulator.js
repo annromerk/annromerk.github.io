@@ -132,9 +132,9 @@ function rung3SVG() {
 function buildLadder() {
   const wrap = document.getElementById('ladder-wrap');
   wrap.innerHTML = `
-    <div class="rung-block"><p class="rung-num">RUNG 1 &mdash; Fault latch</p>${rung1SVG()}</div>
-    <div class="rung-block"><p class="rung-num">RUNG 2 &mdash; Start/Stop seal-in, fault-interlocked</p>${rung2SVG()}</div>
-    <div class="rung-block"><p class="rung-num">RUNG 3 &mdash; Motor output</p>${rung3SVG()}</div>
+    <div class="rung-block"><p class="rung-num">RUNG 1: Fault latch</p>${rung1SVG()}</div>
+    <div class="rung-block"><p class="rung-num">RUNG 2: Start/Stop seal-in, fault-interlocked</p>${rung2SVG()}</div>
+    <div class="rung-block"><p class="rung-num">RUNG 3: Motor output</p>${rung3SVG()}</div>
   `;
 }
 
@@ -233,7 +233,7 @@ function updateStatusBanner() {
   if (state.power) {
     if (state.out.fault) {
       cls = 'state-fault';
-      t = 'FAULT — LOCKED OUT';
+      t = 'FAULT LOCKED OUT';
       d = "Start and Stop won't do anything until you press Reset.";
     } else if (state.out.motor) {
       cls = 'state-running';
@@ -409,7 +409,7 @@ async function runGuidedDemo() {
     await wait(400);
   }
 
-  status.textContent = 'Pressing Start — this starts the simulated conveyor motor.';
+  status.textContent = 'Pressing Start. This starts the simulated conveyor motor.';
   await pressButton('btn-start');
   await waitUntil(() => state.out.run);
   await wait(900);
@@ -420,13 +420,13 @@ async function runGuidedDemo() {
   await wait(1300);
 
   if (!faultTripped) {
-    status.textContent = 'Demo timed out waiting for the fault to trip — try again or use the controls manually.';
+    status.textContent = 'Demo timed out waiting for the fault to trip. Try again or use the controls manually.';
     setToggle('btn-jam', 'jam', false);
     setControlsEnabled(true);
     return;
   }
 
-  status.textContent = 'Fault tripped: the motor stopped and Start/Stop are locked out, same as the Pico trainer.';
+  status.textContent = 'Fault tripped. The motor stopped and Start/Stop are locked out, same as the Pico trainer.';
   await wait(1600);
 
   status.textContent = 'Clearing the jam and pressing Reset to unlock it...';
@@ -435,7 +435,7 @@ async function runGuidedDemo() {
   await waitUntil(() => !state.out.fault);
   await wait(600);
 
-  status.textContent = 'Done — system is back at ready. Try the controls yourself, or run it again.';
+  status.textContent = 'Done. System is back at ready. Try the controls yourself, or run it again.';
   setControlsEnabled(true);
 }
 
