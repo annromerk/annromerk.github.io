@@ -257,7 +257,7 @@
   border-radius: 50%;
   flex-shrink: 0;
 }
-.legend-dot--blue { background: var(--accent); }
+.legend-dot--accent { background: var(--accent); }
 .legend-dot--red { background: #d64545; }
 
 /* Scan cycle indicator */

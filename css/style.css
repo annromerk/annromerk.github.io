@@ -4,9 +4,9 @@
   --text: #1a1d23;
   --text-dim: #5a6472;
   --border: #e3e6ea;
-  --accent: #1d5fd6;
-  --accent-dark: #14479f;
-  --accent-soft: #eaf0fd;
+  --accent: #d6336c;
+  --accent-dark: #a61e4d;
+  --accent-soft: #fff0f6;
   --radius: 10px;
   --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.05);
   --max-width: 1080px;
@@ -94,6 +94,107 @@ img { max-width: 100%; display: block; }
 .contact-link:visited { color: var(--text-dim); }
 .contact-link:hover { color: var(--accent); }
 .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* Hero fault demo */
+.fault-demo { margin-top: 28px; max-width: 560px; }
+
+.fault-demo-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #1a1d23;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.fault-demo--tripped .fault-demo-panel {
+  animation: fault-flash 0.5s ease-out, fault-shake 0.4s ease;
+}
+
+.fault-demo-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: #8a97a8;
+  transition: color 0.15s ease;
+}
+.fault-demo--tripped .fault-demo-status { color: #ff9b9b; }
+
+.fault-demo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3a4150;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+.fault-demo--tripped .fault-demo-dot {
+  background: #ff4d4d;
+  animation: fault-pulse 0.6s ease-in-out infinite alternate;
+}
+
+.fault-demo-buttons { display: flex; gap: 12px; }
+
+.fault-demo-btn {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.fault-demo-btn--jam { background: #e03131; color: #fff; }
+.fault-demo-btn--jam:hover:not(:disabled) { background: #c92a2a; }
+.fault-demo-btn--jam:disabled { background: #2a2f3a; color: #5a6472; cursor: not-allowed; }
+
+.fault-demo-btn--reset {
+  background: transparent;
+  border-color: #3a4150;
+  color: #5a6472;
+  cursor: not-allowed;
+}
+.fault-demo--tripped .fault-demo-btn--reset {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+.fault-demo--tripped .fault-demo-btn--reset:hover { background: var(--accent-dark); }
+
+.fault-demo-caption {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+.fault-demo-caption a { color: var(--accent); }
+
+@keyframes fault-flash {
+  0% { background: #e03131; }
+  100% { background: #1a1d23; }
+}
+@keyframes fault-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+@keyframes fault-pulse {
+  from { box-shadow: 0 0 8px rgba(255, 77, 77, 0.5); }
+  to { box-shadow: 0 0 18px rgba(255, 77, 77, 0.9); }
+}
 
 .btn {
   display: inline-flex;
@@ -220,7 +321,7 @@ img { max-width: 100%; display: block; }
 
 .project-body { padding: 36px 36px 36px 0; }
 
-.project-tag {
+.project-body .project-tag {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   text-transform: uppercase;
