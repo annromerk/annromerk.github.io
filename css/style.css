@@ -494,6 +494,28 @@ img { max-width: 100%; display: block; }
   margin: 0;
 }
 
+/* FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 68ch;
+}
+
+.faq-item h3 {
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+}
+
+.faq-item p {
+  margin: 0;
+  color: var(--text-dim);
+}
+.faq-item strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
 /* Footer */
 .site-footer {
   padding: 28px 0;
