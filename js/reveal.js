@@ -20,8 +20,19 @@
     { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
   );
 
+  // Check each section's CURRENT position before deciding whether to
+  // animate it. On a refresh where the browser restores scroll position,
+  // sections already on screen must appear immediately - waiting on the
+  // observer's async callback risks a race against that scroll restore
+  // and leaves them stuck invisible.
   sections.forEach((el) => {
-    el.classList.add('reveal');
-    observer.observe(el);
+    const rect = el.getBoundingClientRect();
+    const alreadyInView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (alreadyInView) {
+      el.classList.add('is-visible');
+    } else {
+      el.classList.add('reveal');
+      observer.observe(el);
+    }
   });
 })();

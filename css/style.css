@@ -37,7 +37,8 @@ img { max-width: 100%; display: block; }
 
 /* Hero */
 .hero {
-  padding: 72px 0;
+  position: relative;
+  padding: 72px 0 96px;
   background: linear-gradient(180deg, var(--bg-alt), var(--bg) 70%);
 }
 
@@ -96,22 +97,16 @@ img { max-width: 100%; display: block; }
 .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 .scroll-cue {
-  display: flex;
-  justify-content: center;
-  margin-top: 44px;
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
   color: var(--text-dim);
-  animation: scroll-bounce 2.2s ease-in-out infinite;
-  transition: color 0.15s ease;
+  opacity: 0.6;
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
-.scroll-cue:hover { color: var(--accent); }
-.scroll-cue svg { width: 22px; height: 22px; }
-@keyframes scroll-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(7px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .scroll-cue { animation: none; }
-}
+.scroll-cue:hover { color: var(--accent); opacity: 1; }
+.scroll-cue svg { width: 20px; height: 20px; display: block; }
 
 .btn {
   display: inline-flex;
@@ -514,7 +509,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 720px) {
-  .hero { padding: 48px 0; }
+  .hero { padding: 48px 0 76px; }
   .section { padding: 56px 0; }
 
   .profile-header {
