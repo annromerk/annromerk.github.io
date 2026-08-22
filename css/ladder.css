@@ -434,6 +434,11 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.explainer-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06), 0 18px 34px rgba(15, 23, 42, 0.08);
 }
 
 .explainer-card h3 {
