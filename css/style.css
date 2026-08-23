@@ -38,8 +38,33 @@ img { max-width: 100%; display: block; }
 /* Hero */
 .hero {
   position: relative;
-  padding: 72px 0 96px;
-  background: linear-gradient(180deg, var(--bg-alt), var(--bg) 70%);
+  padding: 0 0 96px;
+  background: var(--bg);
+}
+
+.profile-banner {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #e6efe4, #cee1cf 60%, #bcd4bd);
+}
+.profile-banner::before {
+  content: '';
+  position: absolute;
+  inset: -30px;
+  background:
+    radial-gradient(circle at 4% 20%, #ffffff 0 34px, transparent 36px),
+    radial-gradient(circle at 16% 75%, #ffffff 0 26px, transparent 28px),
+    radial-gradient(circle at 28% 30%, #ffffff 0 20px, transparent 22px),
+    radial-gradient(circle at 40% 88%, #ffffff 0 30px, transparent 32px),
+    radial-gradient(circle at 50% 15%, #ffffff 0 40px, transparent 42px),
+    radial-gradient(circle at 61% 65%, #ffffff 0 24px, transparent 26px),
+    radial-gradient(circle at 72% 20%, #ffffff 0 28px, transparent 30px),
+    radial-gradient(circle at 83% 78%, #ffffff 0 32px, transparent 34px),
+    radial-gradient(circle at 92% 35%, #ffffff 0 22px, transparent 24px),
+    radial-gradient(circle at 99% 82%, #ffffff 0 26px, transparent 28px);
+  opacity: 0.55;
+  filter: blur(14px);
 }
 
 .hero-inner { max-width: 720px; }
@@ -48,9 +73,13 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   gap: 20px;
+  padding-top: 16px;
 }
 
 .profile-avatar {
+  position: relative;
+  top: -44px;
+  margin-bottom: -44px;
   flex-shrink: 0;
   width: 104px;
   height: 104px;
@@ -548,18 +577,23 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 720px) {
-  .hero { padding: 48px 0 76px; }
+  .hero { padding: 0 0 76px; }
   .section { padding: 56px 0; }
+
+  .profile-banner { height: 110px; }
 
   .profile-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    padding-top: 0;
   }
 
   .profile-avatar {
     width: 84px;
     height: 84px;
     font-size: 1.6rem;
+    top: -36px;
+    margin-bottom: -20px;
   }
 }
