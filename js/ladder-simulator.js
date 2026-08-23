@@ -221,6 +221,12 @@ function updateLamps() {
   document.getElementById('lamp-fault').classList.toggle('on', state.out.fault);
 }
 
+function updateConveyorVisual() {
+  const el = document.getElementById('conveyor-visual');
+  el.classList.toggle('is-running', state.power && state.out.motor && !state.out.fault);
+  el.classList.toggle('is-fault', state.power && state.out.fault);
+}
+
 function updateStatusBanner() {
   const banner = document.getElementById('status-banner');
   const title = document.getElementById('status-title');
@@ -250,6 +256,8 @@ function updateStatusBanner() {
   banner.classList.add(cls);
   title.textContent = t;
   desc.textContent = d;
+
+  updateConveyorVisual();
 }
 
 /* ---------- Scan loop ---------- */
