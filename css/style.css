@@ -46,25 +46,7 @@ img { max-width: 100%; display: block; }
   position: relative;
   height: 160px;
   overflow: hidden;
-  background: linear-gradient(160deg, #e6efe4, #cee1cf 60%, #bcd4bd);
-}
-.profile-banner::before {
-  content: '';
-  position: absolute;
-  inset: -30px;
-  background:
-    radial-gradient(circle at 4% 20%, #ffffff 0 34px, transparent 36px),
-    radial-gradient(circle at 16% 75%, #ffffff 0 26px, transparent 28px),
-    radial-gradient(circle at 28% 30%, #ffffff 0 20px, transparent 22px),
-    radial-gradient(circle at 40% 88%, #ffffff 0 30px, transparent 32px),
-    radial-gradient(circle at 50% 15%, #ffffff 0 40px, transparent 42px),
-    radial-gradient(circle at 61% 65%, #ffffff 0 24px, transparent 26px),
-    radial-gradient(circle at 72% 20%, #ffffff 0 28px, transparent 30px),
-    radial-gradient(circle at 83% 78%, #ffffff 0 32px, transparent 34px),
-    radial-gradient(circle at 92% 35%, #ffffff 0 22px, transparent 24px),
-    radial-gradient(circle at 99% 82%, #ffffff 0 26px, transparent 28px);
-  opacity: 0.55;
-  filter: blur(14px);
+  background: #cfe0cf;
 }
 
 .hero-inner { max-width: 720px; }
