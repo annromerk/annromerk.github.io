@@ -38,14 +38,15 @@ img { max-width: 100%; display: block; }
 /* Hero */
 .hero {
   position: relative;
-  padding: 0 0 96px;
+  padding: 40px 0 96px;
   background: var(--bg);
 }
 
 .profile-banner {
   position: relative;
-  height: 160px;
+  height: 130px;
   overflow: hidden;
+  border-radius: var(--radius);
   background: #cfe0cf;
 }
 
@@ -559,7 +560,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 720px) {
-  .hero { padding: 0 0 76px; }
+  .hero { padding: 24px 0 76px; }
   .section { padding: 56px 0; }
 
   .profile-banner { height: 110px; }
