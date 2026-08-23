@@ -25,14 +25,10 @@
       <h1>Ladder Logic Simulator</h1>
       <p>
         This is a self-directed learning project, a browser-based simulator that models how a real PLC
-        (Programmable Logic Controller) evaluates ladder logic. I built it to translate the fault-interlock
-        state machine from my <a href="index.html#project">Raspberry Pi Pico trainer</a> into industry-standard
-        ladder notation.
-      </p>
-      <p>
-        Instruction symbols and layout follow Allen-Bradley/RSLogix conventions (XIC, XIO, OTE), the
-        North American industry standard, since that's the convention most relevant to the equipment
-        I'd be working with in a maintenance role.
+        evaluates ladder logic, translating the fault-interlock state machine from my
+        <a href="index.html#project">Raspberry Pi Pico trainer</a> into Allen-Bradley/RSLogix notation
+        (XIC, XIO, OTE), the North American industry standard for the equipment I'd be working with in a
+        maintenance role.
       </p>
       <div class="sim-disclaimer">
         <strong>What this is:</strong> a learning tool I built to understand ladder logic concepts,
@@ -76,59 +72,62 @@
         </div>
       </div>
 
-      <p class="panel-note">
-        The picture above shows the physical line. The diagram and buttons below are the actual technical simulation,
-        shown in real industrial notation. You don't need to read it to follow along.
-      </p>
+      <div class="sim-technical">
+        <h2 class="section-title">The technical simulation</h2>
+        <p class="panel-note">
+          You don't need to read any of this to follow along, the picture above already told the story.
+          This is the real logic driving it, shown in standard industrial notation.
+        </p>
 
-      <div class="panel-row">
-        <div class="io-controls">
-          <button class="io-btn" id="btn-start" data-momentary>
-            <span class="io-dot"></span>Start
-          </button>
-          <button class="io-btn" id="btn-stop" data-momentary>
-            <span class="io-dot"></span>Stop
-          </button>
-          <button class="io-btn toggle-jam" id="btn-jam">
-            <span class="io-dot"></span>Jam
-          </button>
-          <button class="io-btn" id="btn-reset" data-momentary>
-            <span class="io-dot"></span>Reset
+        <div class="panel-row">
+          <div class="io-controls">
+            <button class="io-btn" id="btn-start" data-momentary>
+              <span class="io-dot"></span>Start
+            </button>
+            <button class="io-btn" id="btn-stop" data-momentary>
+              <span class="io-dot"></span>Stop
+            </button>
+            <button class="io-btn toggle-jam" id="btn-jam">
+              <span class="io-dot"></span>Jam
+            </button>
+            <button class="io-btn" id="btn-reset" data-momentary>
+              <span class="io-dot"></span>Reset
+            </button>
+          </div>
+          <button class="power-toggle on" id="btn-power">
+            <span class="io-dot"></span><span id="power-label">PLC: RUN</span>
           </button>
         </div>
-        <button class="power-toggle on" id="btn-power">
-          <span class="io-dot"></span><span id="power-label">PLC: RUN</span>
-        </button>
-      </div>
-      <p class="io-hint">Or try it yourself: Start/Stop/Reset are momentary pushbuttons, Jam is a toggle switch like a held sensor.</p>
+        <p class="io-hint">Or try it yourself: Start/Stop/Reset are momentary pushbuttons, Jam is a toggle switch like a held sensor.</p>
 
-      <div class="scan-strip">
-        <span class="scan-phase" id="phase-input">Input Scan</span>
-        <span class="scan-phase-arrow">&rarr;</span>
-        <span class="scan-phase" id="phase-program">Program Scan</span>
-        <span class="scan-phase-arrow">&rarr;</span>
-        <span class="scan-phase" id="phase-output">Output Scan</span>
-        <span class="scan-meta" id="scan-counter">Scan #0</span>
-      </div>
-
-      <div class="ladder-legend">
-        <span class="legend-item"><span class="legend-sym">| |</span>a switch (contact) that lets power through when its condition is met</span>
-        <span class="legend-item"><span class="legend-sym">|/|</span>a switch that's normally closed and opens when triggered (used for Stop, Fault, Reset)</span>
-        <span class="legend-item"><span class="legend-sym">( )</span>an output (coil) that turns on when power reaches it</span>
-        <span class="legend-item"><span class="legend-dot legend-dot--accent"></span>power flowing right now</span>
-        <span class="legend-item"><span class="legend-dot legend-dot--red"></span>the fault path</span>
-      </div>
-
-      <div class="ladder-wrap" id="ladder-wrap"></div>
-
-      <div class="sim-outputs">
-        <div class="output-lamp" id="lamp-run">
-          <span class="lamp-dot"></span>
-          <span class="lamp-text"><strong>RUN</strong><span>Motor / conveyor running</span></span>
+        <div class="scan-strip">
+          <span class="scan-phase" id="phase-input">Input Scan</span>
+          <span class="scan-phase-arrow">&rarr;</span>
+          <span class="scan-phase" id="phase-program">Program Scan</span>
+          <span class="scan-phase-arrow">&rarr;</span>
+          <span class="scan-phase" id="phase-output">Output Scan</span>
+          <span class="scan-meta" id="scan-counter">Scan #0</span>
         </div>
-        <div class="output-lamp fault" id="lamp-fault">
-          <span class="lamp-dot"></span>
-          <span class="lamp-text"><strong>FAULT</strong><span>Locked out until Reset</span></span>
+
+        <div class="ladder-legend">
+          <span class="legend-item"><span class="legend-sym">| |</span>a switch (contact) that lets power through when its condition is met</span>
+          <span class="legend-item"><span class="legend-sym">|/|</span>a switch that's normally closed and opens when triggered (used for Stop, Fault, Reset)</span>
+          <span class="legend-item"><span class="legend-sym">( )</span>an output (coil) that turns on when power reaches it</span>
+          <span class="legend-item"><span class="legend-dot legend-dot--accent"></span>power flowing right now</span>
+          <span class="legend-item"><span class="legend-dot legend-dot--red"></span>the fault path</span>
+        </div>
+
+        <div class="ladder-wrap" id="ladder-wrap"></div>
+
+        <div class="sim-outputs">
+          <div class="output-lamp" id="lamp-run">
+            <span class="lamp-dot"></span>
+            <span class="lamp-text"><strong>RUN</strong><span>Motor / conveyor running</span></span>
+          </div>
+          <div class="output-lamp fault" id="lamp-fault">
+            <span class="lamp-dot"></span>
+            <span class="lamp-text"><strong>FAULT</strong><span>Locked out until Reset</span></span>
+          </div>
         </div>
       </div>
 
@@ -148,8 +147,11 @@
             stayed latched in the Fault state until told otherwise. Only Reset breaks the seal. This is the
             same behavior as the Pico's <code>state = "Fault"</code> holding until the reset switch was read.
           </p>
-          <code>if jam or fault:
+          <details>
+            <summary>Show the code</summary>
+            <code>if jam or fault:
     fault = True and not reset</code>
+          </details>
         </div>
 
         <div class="explainer-card">
@@ -160,10 +162,13 @@
             the whole rung the moment Fault is set, the same lockout the Pico enforced by disabling Start
             and Stop whenever <code>state == "Fault"</code>.
           </p>
-          <code>if (start or run) and not stop and not fault:
+          <details>
+            <summary>Show the code</summary>
+            <code>if (start or run) and not stop and not fault:
     run = True
 else:
     run = False</code>
+          </details>
         </div>
 
         <div class="explainer-card">
@@ -172,7 +177,10 @@ else:
             A direct output. Run energizes the Motor coil, mirroring the Pico's status LEDs turning on when
             it entered the Running state.
           </p>
-          <code>motor = run</code>
+          <details>
+            <summary>Show the code</summary>
+            <code>motor = run</code>
+          </details>
         </div>
 
         <div class="explainer-card">

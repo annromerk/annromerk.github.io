@@ -144,6 +144,16 @@
   color: var(--text-dim);
 }
 
+.sim-technical {
+  margin-top: 8px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.sim-technical .section-title {
+  font-size: 1.3rem;
+  margin: 0 0 12px;
+}
+
 .demo-row {
   display: flex;
   align-items: center;
@@ -589,6 +599,16 @@
   color: var(--text-dim);
   font-size: 0.92rem;
 }
+
+.explainer-card summary {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  user-select: none;
+}
+.explainer-card summary::marker { color: var(--accent); }
 
 .explainer-card code {
   display: block;
