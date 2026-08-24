@@ -1,5 +1,15 @@
 import { RichText } from '@/components/RichText';
-import { DockerChipIcon, JsChipIcon, MongoChipIcon, NodeChipIcon, ProjectIcon, ReactChipIcon } from '@/components/icons';
+import {
+  DockerChipIcon,
+  JsChipIcon,
+  MicroPythonChipIcon,
+  MongoChipIcon,
+  NodeChipIcon,
+  ProjectIcon,
+  RaspberryPiChipIcon,
+  ReactChipIcon,
+  SvgChipIcon,
+} from '@/components/icons';
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -83,10 +93,12 @@ export function Projects() {
               </div>
 
               <div className="project-meta">
-                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                  <MicroPythonChipIcon />
                   MicroPython
                 </Badge>
-                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                  <RaspberryPiChipIcon />
                   Raspberry Pi Pico
                 </Badge>
                 <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
@@ -128,7 +140,8 @@ export function Projects() {
                   <JsChipIcon />
                   JavaScript
                 </Badge>
-                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                  <SvgChipIcon />
                   SVG
                 </Badge>
                 <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">

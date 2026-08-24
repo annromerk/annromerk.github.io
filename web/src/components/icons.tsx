@@ -159,3 +159,52 @@ export function DockerChipIcon() {
     </svg>
   );
 }
+
+export function RaspberryPiChipIcon() {
+  return (
+    <svg className="chip-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#C51A4A">
+        <circle cx="9" cy="10.5" r="3.1" />
+        <circle cx="14.5" cy="9" r="2.9" />
+        <circle cx="12" cy="14.5" r="2.9" />
+        <circle cx="16.5" cy="14" r="2.5" />
+        <circle cx="9.5" cy="16" r="2.3" />
+      </g>
+      <path d="M10.5 6.5c0-2.2 2-3.4 4-3-1 1.8-2.2 2.8-4 3Z" fill="#75A928" />
+    </svg>
+  );
+}
+
+export function MicroPythonChipIcon() {
+  return (
+    <svg className="chip-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <rect width="24" height="24" rx="5" fill="#12100E" />
+      <path d="M6.5 8h4.2a2 2 0 0 1 2 2v1H6.5V8Z" fill="#2B75BC" />
+      <circle cx="8.3" cy="16" r="1.1" fill="#2B75BC" />
+      <path d="M17.5 16h-4.2a2 2 0 0 1-2-2v-1h6.2v3Z" fill="#FFD43B" />
+      <circle cx="15.7" cy="8" r="1.1" fill="#FFD43B" />
+    </svg>
+  );
+}
+
+export function SvgChipIcon() {
+  return (
+    <svg className="chip-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <rect width="24" height="24" rx="4" fill="#FFB13B" />
+      <text x="12" y="16.5" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="7.5" fill="#000" textAnchor="middle">
+        SVG
+      </text>
+    </svg>
+  );
+}
+
+export function MicrosoftOfficeChipIcon() {
+  return (
+    <svg className="chip-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="3" width="8" height="8" fill="#EA4300" />
+      <rect x="13" y="3" width="8" height="8" fill="#7CBB00" />
+      <rect x="3" y="13" width="8" height="8" fill="#00A2ED" />
+      <rect x="13" y="13" width="8" height="8" fill="#FFB700" />
+    </svg>
+  );
+}
