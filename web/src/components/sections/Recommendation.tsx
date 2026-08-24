@@ -1,5 +1,5 @@
 import { RecommendationIcon } from '@/components/icons';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardDescription, CardFooter, CardTitle } from '@/components/ui/card';
 import { recommendation } from '@/content/site';
 
@@ -24,6 +24,7 @@ export function Recommendation() {
           </CardContent>
           <CardFooter className="testimonial-footer">
             <Avatar className="testimonial-avatar">
+              <AvatarImage src={recommendation.avatarSrc} alt={recommendation.name} />
               <AvatarFallback className="bg-[var(--accent-soft)] text-[var(--accent-dark)] font-bold">
                 {initials(recommendation.name)}
               </AvatarFallback>

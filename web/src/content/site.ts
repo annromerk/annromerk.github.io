@@ -24,6 +24,7 @@ export const recommendation = {
   name: 'Naomi Carrigan',
   role: 'Senior Software Engineer & Founder of NHCarrigan',
   context: 'Hackathon mentor · LinkedIn recommendation, July 2025',
+  avatarSrc: '/assets/images/naomi-carrigan.jpg',
 };
 
 export interface TimelineItem {
