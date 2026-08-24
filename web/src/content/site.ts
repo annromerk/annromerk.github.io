@@ -21,7 +21,9 @@ export const aboutParagraphs = [
 
 export const recommendation = {
   quote: `"He took ownership of the login page design and truly excelled in this area, diving deep into design principles and creating something he could be genuinely proud of. Despite facing significant time management challenges due to his demanding role at Amazon during Prime Day, Anthony remained committed to the project and continued pushing forward. He also tackled one of his biggest growth areas—mastering Git—showing remarkable determination to expand his technical toolkit even when time was limited."`,
-  cite: 'Naomi Carrigan, Senior Software Engineer & Founder of NHCarrigan, hackathon mentor. LinkedIn recommendation, July 2025.',
+  name: 'Naomi Carrigan',
+  role: 'Senior Software Engineer & Founder of NHCarrigan',
+  context: 'Hackathon mentor · LinkedIn recommendation, July 2025',
 };
 
 export interface TimelineItem {
