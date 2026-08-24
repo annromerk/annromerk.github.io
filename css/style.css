@@ -29,6 +29,24 @@ body {
 
 img { max-width: 100%; display: block; }
 
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 12px;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -140,7 +158,7 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: all 0.15s ease;
+  transition: background 0.15s ease;
   border: 1px solid transparent;
 }
 

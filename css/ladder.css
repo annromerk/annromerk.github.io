@@ -87,9 +87,11 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   user-select: none;
-  transition: all 0.1s ease;
+  transition: border-color 0.1s ease, color 0.1s ease, background 0.1s ease;
   -webkit-tap-highlight-color: transparent;
 }
+.io-btn:hover { border-color: var(--accent); color: var(--accent); }
+.io-btn.toggle-jam:hover { border-color: #d64545; color: #d64545; }
 
 .io-btn .io-dot {
   width: 14px;
@@ -125,7 +127,10 @@
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--text-dim);
+  transition: border-color 0.15s ease;
 }
+.power-toggle:hover { border-color: var(--text-dim); }
+.power-toggle.on:hover { border-color: #2f9e52; }
 .power-toggle .io-dot {
   width: 12px;
   height: 12px;
@@ -202,7 +207,7 @@
   border-radius: 50%;
   background: var(--text-dim);
   flex-shrink: 0;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .status-banner.state-running .status-dot {
@@ -426,7 +431,7 @@
   background: var(--bg-alt);
   border: 1px solid var(--border);
   color: var(--text-dim);
-  transition: all 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 .scan-phase.active {
   background: var(--accent);
@@ -551,7 +556,7 @@
   border-radius: 50%;
   background: var(--border);
   flex-shrink: 0;
-  transition: all 0.15s ease;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
 }
 
 .output-lamp.on .lamp-dot {
