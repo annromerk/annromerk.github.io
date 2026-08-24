@@ -76,44 +76,44 @@ function railSVG(x, y1, y2) {
 /* ---------- Rung markup ---------- */
 
 function rung1SVG() {
-  return `<svg class="rung-svg" viewBox="0 0 960 150" xmlns="http://www.w3.org/2000/svg">
-    ${railSVG(20, 15, 140)}
-    ${railSVG(940, 15, 140)}
-    ${staticWire(20, 90, 55)}
-    ${staticWire(90, 140, 55)}
-    ${contactSVG('r1-jam', 160, 55, 'JAM', 'XIC', false)}
-    ${wireSVG('r1-out-jam', 180, 230, 55)}
-    ${staticVert(90, 55, 100)}
-    ${staticWire(90, 140, 100)}
-    ${contactSVG('r1-seal', 160, 100, 'FAULT', 'XIC', false)}
-    ${vertSVG('r1-bv2', 230, 55, 100)}
-    ${wireSVG('r1-merge', 230, 450, 55)}
-    ${contactSVG('r1-reset', 470, 55, 'RESET', 'XIO', true)}
-    ${wireSVG('r1-post-reset', 490, 740, 55)}
-    ${coilSVG('r1-coil', 760, 55, 'FAULT', 'OTE')}
-    ${wireSVG('r1-out', 780, 940, 55)}
+  return `<svg class="rung-svg" viewBox="0 0 960 185" xmlns="http://www.w3.org/2000/svg">
+    ${railSVG(20, 10, 170)}
+    ${railSVG(940, 10, 170)}
+    ${staticWire(20, 90, 45)}
+    ${staticWire(90, 140, 45)}
+    ${contactSVG('r1-jam', 160, 45, 'JAM', 'XIC', false)}
+    ${wireSVG('r1-out-jam', 180, 230, 45)}
+    ${staticVert(90, 45, 125)}
+    ${staticWire(90, 140, 125)}
+    ${contactSVG('r1-seal', 160, 125, 'FAULT', 'XIC', false)}
+    ${vertSVG('r1-bv2', 230, 45, 125)}
+    ${wireSVG('r1-merge', 230, 450, 45)}
+    ${contactSVG('r1-reset', 470, 45, 'RESET', 'XIO', true)}
+    ${wireSVG('r1-post-reset', 490, 740, 45)}
+    ${coilSVG('r1-coil', 760, 45, 'FAULT', 'OTE')}
+    ${wireSVG('r1-out', 780, 940, 45)}
   </svg>`;
 }
 
 function rung2SVG() {
-  return `<svg class="rung-svg" viewBox="0 0 960 150" xmlns="http://www.w3.org/2000/svg">
-    ${railSVG(20, 15, 140)}
-    ${railSVG(940, 15, 140)}
-    ${staticWire(20, 90, 55)}
-    ${staticWire(90, 140, 55)}
-    ${contactSVG('r2-start', 160, 55, 'START', 'XIC', false)}
-    ${wireSVG('r2-out-start', 180, 230, 55)}
-    ${staticVert(90, 55, 100)}
-    ${staticWire(90, 140, 100)}
-    ${contactSVG('r2-seal', 160, 100, 'RUN', 'XIC', false)}
-    ${vertSVG('r2-bv2', 230, 55, 100)}
-    ${wireSVG('r2-merge', 230, 360, 55)}
-    ${contactSVG('r2-stop', 380, 55, 'STOP', 'XIO', true)}
-    ${wireSVG('r2-post-stop', 400, 540, 55)}
-    ${contactSVG('r2-fault', 560, 55, 'FAULT', 'XIO', true)}
-    ${wireSVG('r2-post-fault', 580, 740, 55)}
-    ${coilSVG('r2-coil', 760, 55, 'RUN', 'OTE')}
-    ${wireSVG('r2-out', 780, 940, 55)}
+  return `<svg class="rung-svg" viewBox="0 0 960 185" xmlns="http://www.w3.org/2000/svg">
+    ${railSVG(20, 10, 170)}
+    ${railSVG(940, 10, 170)}
+    ${staticWire(20, 90, 45)}
+    ${staticWire(90, 140, 45)}
+    ${contactSVG('r2-start', 160, 45, 'START', 'XIC', false)}
+    ${wireSVG('r2-out-start', 180, 230, 45)}
+    ${staticVert(90, 45, 125)}
+    ${staticWire(90, 140, 125)}
+    ${contactSVG('r2-seal', 160, 125, 'RUN', 'XIC', false)}
+    ${vertSVG('r2-bv2', 230, 45, 125)}
+    ${wireSVG('r2-merge', 230, 360, 45)}
+    ${contactSVG('r2-stop', 380, 45, 'STOP', 'XIO', true)}
+    ${wireSVG('r2-post-stop', 400, 540, 45)}
+    ${contactSVG('r2-fault', 560, 45, 'FAULT', 'XIO', true)}
+    ${wireSVG('r2-post-fault', 580, 740, 45)}
+    ${coilSVG('r2-coil', 760, 45, 'RUN', 'OTE')}
+    ${wireSVG('r2-out', 780, 940, 45)}
   </svg>`;
 }
 
