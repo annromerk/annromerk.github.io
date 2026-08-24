@@ -15,7 +15,13 @@ export function Projects() {
         <div className="projects-stack">
           <div className="project-card">
             <div className="project-media">
-              <video className="project-video" controls preload="metadata" playsInline>
+              <video
+                className="project-video"
+                controls
+                preload="metadata"
+                playsInline
+                poster="/assets/video/pi-trainer-poster.jpg"
+              >
                 <source src="/assets/video/pi-trainer-demo.mp4" type="video/mp4" />
                 Your browser doesn&apos;t support embedded video.{' '}
                 <a href="/assets/video/pi-trainer-demo.mp4">Download the demo video</a> instead.
