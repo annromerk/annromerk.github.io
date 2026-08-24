@@ -271,7 +271,13 @@ function advanceWalkthrough() {
     walkRung1Revealed = true;
     changed = true;
   }
-  if (walkStage === 4 && !state.out.fault && walkRung1Revealed) {
+  // Reset is wired after the Jam/seal-in merge, so holding Reset genuinely
+  // clears the fault for a moment even with Jam still held, real ladder
+  // behavior, not a bug. But Jam is a toggle: if it's still on, the fault
+  // just re-latches on the very next scan. Only count step 4 as done once
+  // Jam is actually off too, otherwise this looks like a false "passed"
+  // right before the fault trips again.
+  if (walkStage === 4 && !state.out.fault && !state.raw.jam && walkRung1Revealed) {
     walkStage = 5;
     changed = true;
   }
