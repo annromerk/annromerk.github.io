@@ -1,3 +1,9 @@
+export const heroStats = [
+  { value: 3, suffix: '+', label: 'Years hands-on experience' },
+  { value: 3, suffix: '', label: 'Projects built' },
+  { value: 5, suffix: '', label: 'Certifications earned' },
+] as const;
+
 export const tocItems = [
   { id: 'about', label: 'About' },
   { id: 'project', label: 'Projects' },
