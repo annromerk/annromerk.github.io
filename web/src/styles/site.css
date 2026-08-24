@@ -251,35 +251,11 @@ img { max-width: 100%; display: block; }
   margin: 18px 0 4px;
 }
 
-.meta-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  color: var(--text-dim);
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-}
-
 .chip-icon {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
 }
-
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-  padding: 10px 8px;
-  margin: 6px -8px -10px;
-}
-.project-link:hover { color: var(--accent-dark); }
 
 .project-media {
   width: 100%;
@@ -469,17 +445,6 @@ img { max-width: 100%; display: block; }
   flex-wrap: wrap;
   gap: 8px;
 }
-
-.tag-list li {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--text-dim);
-  padding: 7px 12px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-}
-
-.section-alt .tag-list li { background: var(--bg); }
 
 /* Testimonial */
 .testimonial {

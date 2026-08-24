@@ -1,4 +1,5 @@
 import { CertIcon } from '@/components/icons';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { certifications } from '@/content/site';
 
 export function Certifications() {
@@ -11,10 +12,14 @@ export function Certifications() {
         </h2>
         <div className="cert-grid">
           {certifications.map((cert) => (
-            <div className="cert-card" key={cert.title}>
-              <h3>{cert.title}</h3>
-              <p>{cert.org}</p>
-            </div>
+            <Card className="cert-card" key={cert.title}>
+              <CardHeader className="p-0">
+                <CardTitle className="text-[1rem] leading-tight font-semibold text-[var(--text)]">
+                  {cert.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0 text-[0.9rem] text-[var(--text-dim)]">{cert.org}</CardContent>
+            </Card>
           ))}
         </div>
       </div>

@@ -1,5 +1,8 @@
 import { RichText } from '@/components/RichText';
 import { DockerChipIcon, JsChipIcon, MongoChipIcon, NodeChipIcon, ProjectIcon, ReactChipIcon } from '@/components/icons';
+import { Badge } from '@/components/ui/badge';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export function Projects() {
   return (
@@ -97,14 +100,18 @@ export function Projects() {
                 </li>
               </ul>
               <div className="project-meta">
-                <span className="meta-chip">
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
                   <JsChipIcon />
                   JavaScript
-                </span>
-                <span className="meta-chip">SVG</span>
-                <span className="meta-chip">PLC / Ladder Logic</span>
+                </Badge>
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal">
+                  SVG
+                </Badge>
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal">
+                  PLC / Ladder Logic
+                </Badge>
               </div>
-              <a className="project-link" href="/ladder-simulator/">
+              <a className={cn(buttonVariants({ variant: 'default' }), 'mt-1.5 h-auto px-4 py-2.5 text-[0.9rem]')} href="/ladder-simulator/">
                 Open the simulator →
               </a>
             </div>
@@ -121,26 +128,28 @@ export function Projects() {
                 Git well enough to work inside a large, distributed team.
               </p>
               <div className="project-meta">
-                <span className="meta-chip">14-person team</span>
-                <span className="meta-chip">
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal">
+                  14-person team
+                </Badge>
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
                   <ReactChipIcon />
                   React
-                </span>
-                <span className="meta-chip">
+                </Badge>
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
                   <NodeChipIcon />
                   Node/Express
-                </span>
-                <span className="meta-chip">
+                </Badge>
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
                   <MongoChipIcon />
                   MongoDB
-                </span>
-                <span className="meta-chip">
+                </Badge>
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
                   <DockerChipIcon />
                   Docker
-                </span>
+                </Badge>
               </div>
               <a
-                className="project-link"
+                className={cn(buttonVariants({ variant: 'outline' }), 'mt-1.5 h-auto px-4 py-2.5 text-[0.9rem]')}
                 href="https://github.com/nhcarrigan-2025-hackathon/yellow-packet"
                 target="_blank"
                 rel="noopener"
