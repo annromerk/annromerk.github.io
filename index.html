@@ -19,10 +19,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/experiment-document.css">
 </head>
-<body>
+<body class="doc-mode">
 
 <a class="skip-link" href="#main-content">Skip to content</a>
+
+<div class="doc-progress"><div class="doc-progress-bar" id="doc-progress-bar"></div></div>
+
+<nav class="doc-toc" aria-label="Table of contents">
+  <span class="doc-toc-eyebrow">Contents</span>
+  <a href="#about" data-doc-target="about"><span class="doc-toc-num">01</span>About</a>
+  <a href="#project" data-doc-target="project"><span class="doc-toc-num">02</span>Projects</a>
+  <a href="#recommendation" data-doc-target="recommendation"><span class="doc-toc-num">03</span>Recommendation</a>
+  <a href="#experience" data-doc-target="experience"><span class="doc-toc-num">04</span>Experience</a>
+  <a href="#skills" data-doc-target="skills"><span class="doc-toc-num">05</span>Skills</a>
+  <a href="#certifications" data-doc-target="certifications"><span class="doc-toc-num">06</span>Certifications</a>
+  <a href="#faq" data-doc-target="faq"><span class="doc-toc-num">07</span>FAQ</a>
+</nav>
 
 <main id="main-content">
 
@@ -423,5 +437,6 @@
 
 <script src="js/script.js"></script>
 <script src="js/reveal.js"></script>
+<script src="js/experiment-document.js"></script>
 </body>
 </html>
