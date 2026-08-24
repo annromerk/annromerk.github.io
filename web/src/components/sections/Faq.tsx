@@ -3,8 +3,6 @@ import { FaqIcon } from '@/components/icons';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { faqs } from '@/content/site';
 
-const allOpen = faqs.map((_, i) => `faq-${i}`);
-
 export function Faq() {
   return (
     <section className="section section-alt" id="faq">
@@ -13,7 +11,7 @@ export function Faq() {
           <FaqIcon />
           Things You Might Be Wondering
         </h2>
-        <Accordion className="faq-accordion" multiple defaultValue={allOpen}>
+        <Accordion className="faq-accordion" multiple>
           {faqs.map((item, i) => (
             <AccordionItem key={item.q} value={`faq-${i}`} className="faq-item">
               <AccordionTrigger className="faq-trigger">{item.q}</AccordionTrigger>
