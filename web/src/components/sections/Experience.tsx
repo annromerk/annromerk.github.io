@@ -1,0 +1,61 @@
+import { RichText } from '@/components/RichText';
+import { AmazonBadgeIcon, ExperienceIcon } from '@/components/icons';
+import { timeline, type TimelineItem } from '@/content/site';
+
+function Badge({ badge, org }: { badge: TimelineItem['badge']; org: string }) {
+  if (badge.kind === 'amazon') {
+    return (
+      <div className="org-badge org-badge--icon" title="Amazon">
+        <AmazonBadgeIcon />
+      </div>
+    );
+  }
+  if (badge.kind === 'image') {
+    return (
+      <div className="org-badge org-badge--icon" title={org}>
+        <img src={badge.src} alt={badge.alt} width={200} height={200} loading="lazy" />
+      </div>
+    );
+  }
+  return <div className="org-badge">{badge.text}</div>;
+}
+
+export function Experience() {
+  return (
+    <section className="section" id="experience">
+      <div className="container">
+        <h2 className="section-title">
+          <ExperienceIcon />
+          Experience
+        </h2>
+        <ol className="timeline">
+          {timeline.map((item) => (
+            <li className="timeline-item" key={item.org + item.date}>
+              <div className="timeline-when">
+                <span className="timeline-date">{item.date}</span>
+              </div>
+              <div className="timeline-body">
+                <div className="timeline-heading">
+                  <Badge badge={item.badge} org={item.org} />
+                  <div>
+                    <h3>
+                      {item.title} {item.titleDim && <span className="dim">{item.titleDim}</span>}
+                    </h3>
+                    <p className="timeline-org">{item.org}</p>
+                  </div>
+                </div>
+                <ul>
+                  {item.bullets.map((b) => (
+                    <li key={b.slice(0, 24)}>
+                      <RichText text={b} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}

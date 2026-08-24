@@ -1,0 +1,109 @@
+/* EXPERIMENTAL — "read like a document" site-wide layer.
+   Adds a reading-progress bar, a scroll-tracking table of contents, and
+   document-style section numbering. Reuses the existing color/type tokens
+   on purpose — this is a structural layer, not a reskin.
+   Isolated: remove the two <link>/<script> tags in index.html, the
+   .doc-toc/.doc-progress markup, and delete these two files to revert. */
+
+.doc-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--border);
+  z-index: 200;
+}
+.doc-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.1s linear;
+}
+
+.doc-toc {
+  display: none;
+}
+
+@media (min-width: 1180px) {
+  body.doc-mode {
+    padding-left: 220px;
+    --max-width: 1240px;
+  }
+
+  .doc-toc {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 96px 20px 40px 32px;
+    border-right: 1px solid var(--border);
+    background: var(--bg);
+    z-index: 90;
+  }
+
+  .doc-toc-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+  }
+
+  .doc-toc a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    margin-left: -12px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .doc-toc a:hover { color: var(--text); }
+  .doc-toc a.is-active {
+    color: var(--accent);
+    font-weight: 700;
+    border-left-color: var(--accent);
+  }
+
+  .doc-toc-num {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    opacity: 0.7;
+  }
+  .doc-toc a.is-active .doc-toc-num {
+    color: var(--accent);
+    opacity: 1;
+  }
+}
+
+/* Document-style section numbering — counts every numbered section's
+   .section-title, skipping the hero (which isn't a .section). */
+body.doc-mode main {
+  counter-reset: doc-section;
+}
+body.doc-mode .section .section-title {
+  counter-increment: doc-section;
+}
+body.doc-mode .section .section-title::before {
+  content: "0" counter(doc-section);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-right: 4px;
+  order: -1;
+}
