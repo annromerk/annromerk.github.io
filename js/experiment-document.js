@@ -43,4 +43,18 @@
 
     sections.forEach((section) => observer.observe(section));
   }
+
+  // In-page section links (TOC + hero scroll cue) scroll smoothly without
+  // ever writing a #hash into the address bar, so reloading or sharing the
+  // plain URL always lands on the hero, not mid-page.
+  const inPageLinks = document.querySelectorAll('.doc-toc a[data-doc-target], .scroll-cue');
+  inPageLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.dataset.docTarget || link.getAttribute('href').slice(1);
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 })();
