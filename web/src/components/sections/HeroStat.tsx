@@ -1,5 +1,6 @@
 import { animated, useSpring } from '@react-spring/web';
 import { m, type Variants } from 'motion/react';
+import { easeOutBackSubtle } from '@/lib/easing';
 
 export function HeroStat({
   index,
@@ -17,13 +18,11 @@ export function HeroStat({
   const reducedMotion =
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // react-spring drives the count-up with real spring physics (mass/tension/
-  // friction) rather than a fixed-duration easing curve, so it settles with
-  // a touch of natural overshoot instead of a mechanical linear-to-eased count.
   const { count } = useSpring({
     from: { count: 0 },
     to: { count: value },
-    config: { mass: 1, tension: 110, friction: 22 },
+    delay: 600 + index * 120,
+    config: { duration: 1400, easing: easeOutBackSubtle },
     immediate: reducedMotion,
   });
 
