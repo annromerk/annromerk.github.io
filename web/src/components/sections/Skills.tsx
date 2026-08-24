@@ -17,7 +17,12 @@ export function Skills() {
               <h3>{group.title}</h3>
               <ul className="tag-list">
                 {group.tags.map((tag) => (
-                  <Badge variant="outline" render={<li />} className="h-auto px-3 py-1.5 text-[0.85rem] font-normal" key={tag}>
+                  <Badge
+                    variant="outline"
+                    render={<li />}
+                    className="h-auto max-w-full items-start overflow-visible px-3 py-1.5 text-[0.85rem] font-normal whitespace-normal"
+                    key={tag}
+                  >
                     {tag}
                   </Badge>
                 ))}

@@ -100,14 +100,14 @@ export function Projects() {
                 </li>
               </ul>
               <div className="project-meta">
-                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
                   <JsChipIcon />
                   JavaScript
                 </Badge>
-                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal">
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
                   SVG
                 </Badge>
-                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal">
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
                   PLC / Ladder Logic
                 </Badge>
               </div>
@@ -128,22 +128,22 @@ export function Projects() {
                 Git well enough to work inside a large, distributed team.
               </p>
               <div className="project-meta">
-                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal">
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
                   14-person team
                 </Badge>
-                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
                   <ReactChipIcon />
                   React
                 </Badge>
-                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
                   <NodeChipIcon />
                   Node/Express
                 </Badge>
-                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
                   <MongoChipIcon />
                   MongoDB
                 </Badge>
-                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal">
+                <Badge variant="outline" className="h-auto gap-1.5 px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
                   <DockerChipIcon />
                   Docker
                 </Badge>
