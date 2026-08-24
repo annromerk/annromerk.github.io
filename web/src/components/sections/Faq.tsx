@@ -1,6 +1,9 @@
 import { RichText } from '@/components/RichText';
 import { FaqIcon } from '@/components/icons';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { faqs } from '@/content/site';
+
+const allOpen = faqs.map((_, i) => `faq-${i}`);
 
 export function Faq() {
   return (
@@ -10,16 +13,16 @@ export function Faq() {
           <FaqIcon />
           Things You Might Be Wondering
         </h2>
-        <div className="faq-list">
-          {faqs.map((item) => (
-            <div className="faq-item" key={item.q}>
-              <h3>{item.q}</h3>
-              <p>
+        <Accordion className="faq-accordion" multiple defaultValue={allOpen}>
+          {faqs.map((item, i) => (
+            <AccordionItem key={item.q} value={`faq-${i}`} className="faq-item">
+              <AccordionTrigger className="faq-trigger">{item.q}</AccordionTrigger>
+              <AccordionContent className="faq-content">
                 <RichText text={item.a} />
-              </p>
-            </div>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
     </section>
   );

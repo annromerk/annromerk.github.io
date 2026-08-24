@@ -11,8 +11,9 @@ export function Skills() {
           Skills
         </h2>
         <div className="skills-grid">
-          {skillGroups.map((group) => (
+          {skillGroups.map((group, i) => (
             <div className="skill-group" key={group.title}>
+              <span className="skill-eyebrow">{`// 0${i + 1}`}</span>
               <h3>{group.title}</h3>
               <ul className="tag-list">
                 {group.tags.map((tag) => (

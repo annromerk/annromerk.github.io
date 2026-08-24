@@ -1,8 +1,9 @@
 import { RichText } from '@/components/RichText';
 import { AmazonBadgeIcon, ExperienceIcon } from '@/components/icons';
+import { Badge } from '@/components/ui/badge';
 import { timeline, type TimelineItem } from '@/content/site';
 
-function Badge({ badge, org }: { badge: TimelineItem['badge']; org: string }) {
+function OrgBadge({ badge, org }: { badge: TimelineItem['badge']; org: string }) {
   if (badge.kind === 'amazon') {
     return (
       <div className="org-badge org-badge--icon" title="Amazon">
@@ -33,10 +34,15 @@ export function Experience() {
             <li className="timeline-item" key={item.org + item.date}>
               <div className="timeline-when">
                 <span className="timeline-date">{item.date}</span>
+                {item.date.endsWith('Present') && (
+                  <Badge variant="default" className="ml-2 h-auto px-2 py-0.5 text-[0.68rem] font-mono uppercase tracking-wider">
+                    Current
+                  </Badge>
+                )}
               </div>
               <div className="timeline-body">
                 <div className="timeline-heading">
-                  <Badge badge={item.badge} org={item.org} />
+                  <OrgBadge badge={item.badge} org={item.org} />
                   <div>
                     <h3>
                       {item.title} {item.titleDim && <span className="dim">{item.titleDim}</span>}
