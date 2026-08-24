@@ -1,4 +1,5 @@
 /* EXPERIMENTAL — HMI/SCADA telemetry hero preview. Scoped to .hero-hmi.
+   Real layout restructure: bordered instrument panels in a grid, not a reskinned flex row.
    Isolated on purpose: swap the class off the hero + delete this file to fully revert. */
 
 .hero-hmi {
@@ -31,26 +32,28 @@
 
 .hero-hmi .profile-banner { display: none; }
 
-.hero-hmi .hero-inner {
+/* Top status bar — spans full bleed width, outside the content column */
+.hmi-topbar {
   position: relative;
   z-index: 1;
-  max-width: 900px;
-  padding: 44px 24px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid rgba(74, 246, 38, 0.25);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.hero-hmi .hmi-status-line {
+.hmi-status-line {
   display: flex;
   align-items: center;
   gap: 9px;
-  margin: 0 0 28px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: #4AF626;
 }
-.hero-hmi .hmi-led {
+.hmi-led {
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -63,17 +66,62 @@
   50% { opacity: 0.4; }
 }
 
+.hmi-clock {
+  color: #6b8a6b;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-hmi .hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  padding: 28px 24px 56px;
+}
+
+/* Instrument panel grid — three distinct bordered compartments */
+.hmi-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-areas:
+    "id readouts"
+    "controls controls";
+  gap: 1px;
+  background: rgba(74, 246, 38, 0.25);
+  border: 1px solid rgba(74, 246, 38, 0.25);
+}
+
+.hmi-panel {
+  position: relative;
+  background: #0d0f0d;
+  padding: 24px;
+}
+.hmi-panel-label {
+  display: block;
+  margin: 0 0 16px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4AF626;
+  opacity: 0.7;
+}
+
+.hmi-panel--id { grid-area: id; }
+.hmi-panel--readouts { grid-area: readouts; }
+.hmi-panel--controls { grid-area: controls; }
+
 .hero-hmi .profile-header {
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   padding-top: 0;
 }
 
 .hero-hmi .profile-avatar {
   position: static;
   margin-bottom: 0;
-  width: 96px;
-  height: 96px;
+  width: 84px;
+  height: 84px;
   border-radius: 4px;
   border: 1px solid rgba(74, 246, 38, 0.4);
   box-shadow: 0 0 0 1px #0d0f0d, 0 0 20px rgba(74, 246, 38, 0.15);
@@ -82,7 +130,7 @@
 .hero-hmi h1 {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: clamp(1.7rem, 4.4vw, 2.6rem);
+  font-size: clamp(1.4rem, 3.4vw, 1.8rem);
   letter-spacing: -0.01em;
   color: #EAEAEA;
   text-shadow: 0 0 18px rgba(74, 246, 38, 0.25);
@@ -90,20 +138,20 @@
 
 .hero-hmi .hero-tagline {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: #8fa38f;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 .hero-hmi .hero-tagline::before { content: "> "; color: #4AF626; }
 .hero-hmi .hero-tagline::after {
   content: "";
   display: inline-block;
-  width: 7px;
-  height: 14px;
+  width: 6px;
+  height: 12px;
   margin-left: 4px;
   background: #4AF626;
-  vertical-align: -2px;
+  vertical-align: -1px;
   animation: hmi-blink 1s step-end infinite;
 }
 @keyframes hmi-blink {
@@ -111,8 +159,38 @@
   50.01%, 100% { opacity: 0; }
 }
 
+/* Telemetry readout panel — three live-looking stat instruments */
+.hmi-readout-row {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+  align-items: flex-end;
+}
+.hmi-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hmi-readout-value {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #4AF626;
+  text-shadow: 0 0 14px rgba(74, 246, 38, 0.4);
+  font-variant-numeric: tabular-nums;
+}
+.hmi-readout-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b8a6b;
+}
+
+/* Controls panel — full-width strip, buttons laid out like a switch bank */
 .hero-hmi .contact-row {
-  margin-top: 32px;
+  margin-top: 0;
   gap: 10px;
 }
 
@@ -140,8 +218,27 @@
 .hero-hmi .scroll-cue { color: #8fa38f; opacity: 0.5; }
 .hero-hmi .scroll-cue:hover { color: #4AF626; opacity: 1; }
 
+@media (max-width: 720px) {
+  .hmi-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "id"
+      "readouts"
+      "controls";
+  }
+  .hmi-readout-row {
+    flex-wrap: wrap;
+    gap: 24px 32px;
+    height: auto;
+    align-items: flex-start;
+  }
+  .hero-hmi .profile-header {
+    flex-direction: row;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-hmi .hmi-led,
+  .hmi-led,
   .hero-hmi .hero-tagline::after {
     animation: none;
   }
