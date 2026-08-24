@@ -8,6 +8,38 @@ const OUTPUT_MS = 300;
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+/* ---------- Fault alarm beep (mirrors the Pi Pico trainer's real buzzer).
+   AudioContext must be created/resumed inside a genuine user gesture, so
+   ensureAudio() is called from the button click handlers, not here. ---------- */
+
+let audioCtx = null;
+
+function ensureAudio() {
+  if (!audioCtx) {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    audioCtx = new Ctx();
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+
+function beepFault() {
+  if (!audioCtx) return;
+  const now = audioCtx.currentTime;
+  [0, 0.2].forEach((offset) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'square';
+    osc.frequency.value = 880;
+    gain.gain.setValueAtTime(0.0001, now + offset);
+    gain.gain.exponentialRampToValueAtTime(0.12, now + offset + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + offset + 0.16);
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.start(now + offset);
+    osc.stop(now + offset + 0.18);
+  });
+}
+
 const state = {
   power: false,
   // raw: the "pulse" register the next Input Scan reads. A momentary button
@@ -410,6 +442,7 @@ async function scanLoop() {
     const r1 = evalRung1(oldFault, state.img.jam, state.img.reset);
     applyRung1(r1);
     state.out.fault = r1.newFault;
+    if (!oldFault && state.out.fault) beepFault();
     await wait(PER_RUNG_MS);
     if (!state.power) break;
 
@@ -445,9 +478,22 @@ function stopAndReset() {
 
 /* ---------- Input wiring ---------- */
 
+let lockoutTimer = null;
+
+function showLockoutMessage() {
+  const msg = document.getElementById('lockout-message');
+  msg.classList.remove('is-hidden');
+  clearTimeout(lockoutTimer);
+  lockoutTimer = setTimeout(() => msg.classList.add('is-hidden'), 2500);
+}
+
 function bindMomentary(btnId, key) {
   const btn = document.getElementById(btnId);
   const press = () => {
+    ensureAudio();
+    if ((key === 'start' || key === 'stop') && state.power && state.out.fault) {
+      showLockoutMessage();
+    }
     state.held[key] = true;
     state.raw[key] = true;
     btn.classList.add('active', 'pressed');
@@ -469,7 +515,10 @@ function setToggle(btnId, key, on) {
 
 function bindToggle(btnId, key) {
   const btn = document.getElementById(btnId);
-  btn.addEventListener('click', () => setToggle(btnId, key, !state.raw[key]));
+  btn.addEventListener('click', () => {
+    ensureAudio();
+    setToggle(btnId, key, !state.raw[key]);
+  });
 }
 
 function setPower(on) {
@@ -489,7 +538,10 @@ function setPower(on) {
 }
 
 function bindPower() {
-  document.getElementById('btn-power').addEventListener('click', () => setPower(!state.power));
+  document.getElementById('btn-power').addEventListener('click', () => {
+    ensureAudio();
+    setPower(!state.power);
+  });
 }
 
 bindMomentary('btn-start', 'start');
