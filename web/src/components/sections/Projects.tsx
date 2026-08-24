@@ -81,6 +81,24 @@ export function Projects() {
                   the equipment down until someone deals with it.
                 </p>
               </div>
+
+              <div className="project-meta">
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                  MicroPython
+                </Badge>
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                  Raspberry Pi Pico
+                </Badge>
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                  GPIO Wiring
+                </Badge>
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                  Breadboard Prototyping
+                </Badge>
+                <Badge variant="outline" className="h-auto px-3 py-1.5 text-[0.82rem] font-normal whitespace-normal">
+                  Fault-Interlock Logic
+                </Badge>
+              </div>
             </div>
           </div>
 
