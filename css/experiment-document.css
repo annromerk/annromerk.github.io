@@ -28,6 +28,7 @@
 @media (min-width: 1180px) {
   body.doc-mode {
     padding-left: 220px;
+    --max-width: 1240px;
   }
 
   .doc-toc {
