@@ -129,13 +129,133 @@ function rung3SVG() {
   </svg>`;
 }
 
-function buildLadder() {
-  const wrap = document.getElementById('ladder-wrap');
-  wrap.innerHTML = `
-    <div class="rung-block"><p class="rung-num">RUNG 1: Fault latch</p>${rung1SVG()}</div>
-    <div class="rung-block"><p class="rung-num">RUNG 2: Start/Stop seal-in, fault-interlocked</p>${rung2SVG()}</div>
-    <div class="rung-block"><p class="rung-num">RUNG 3: Motor output</p>${rung3SVG()}</div>
-  `;
+/* ---------- Walkthrough: rungs are only revealed, with their explanation,
+   once the action that drives them has actually happened ---------- */
+
+function rung23Block() {
+  return `
+    <div class="rung-block">
+      <p class="rung-num">RUNG 2: Start/Stop seal-in, fault-interlocked</p>
+      ${rung2SVG()}
+      <p class="rung-explain">That's the classic motor-starter circuit: Start energized Run, and a seal-in
+        contact (Run) keeps it energized after you let go, the same way the Pico's state stayed
+        <code>Running</code> once it started. A Fault contact in series would cut the whole rung the
+        instant a fault trips.</p>
+      <details>
+        <summary>Show the code</summary>
+        <code>if (start or run) and not stop and not fault:
+    run = True
+else:
+    run = False</code>
+      </details>
+    </div>
+    <div class="rung-block">
+      <p class="rung-num">RUNG 3: Motor output</p>
+      ${rung3SVG()}
+      <p class="rung-explain">A direct output: Run energizes the Motor coil, mirroring the Pico's status
+        LEDs turning on when it entered the Running state.</p>
+      <details>
+        <summary>Show the code</summary>
+        <code>motor = run</code>
+      </details>
+    </div>`;
+}
+
+function rung1Block() {
+  return `
+    <div class="rung-block">
+      <p class="rung-num">RUNG 1: Fault latch</p>
+      ${rung1SVG()}
+      <p class="rung-explain">Jam just set the Fault coil here, and its own seal-in contact (Fault, in
+        parallel with Jam) keeps it latched even after Jam clears, exactly like the Pico's fault-interlock
+        logic stayed latched in the Fault state until told otherwise. That same Fault contact sits in
+        series in Rung 2 above, which is what cut the motor immediately. Only Reset breaks the seal.</p>
+      <details>
+        <summary>Show the code</summary>
+        <code>if jam or fault:
+    fault = True and not reset</code>
+      </details>
+    </div>`;
+}
+
+/* ---------- Walkthrough state machine ---------- */
+
+let walkStage = 1;
+let walkRung1Revealed = false;
+
+const WALK_STEPS = {
+  1: { step: 'Step 1 of 4', text: 'Turn on the PLC to begin.' },
+  2: { step: 'Step 2 of 4', text: 'Press Start to run the line.' },
+  3: { step: 'Step 3 of 4', text: 'Now trip a fault: hold Jam.' },
+  4: { step: 'Step 4 of 4', text: 'Clear the jam, then press Reset.' },
+  5: {
+    step: 'Walkthrough complete',
+    text: "Nice work. You've now seen all three rungs work together: Start/seal-in drives the motor, "
+      + 'and a fault latch can cut it instantly until Reset. (The Pico trainer used this same logic, just '
+      + "with a 2-second jam-hold timer left out here to keep this diagram focused on scan-cycle behavior "
+      + 'and NO/NC contact logic.) The controls below are unlocked, explore freely or restart to watch it '
+      + 'again.',
+  },
+};
+
+function updateWalkthroughPanel() {
+  const s = WALK_STEPS[walkStage];
+  document.getElementById('walkthrough-step').textContent = s.step;
+  document.getElementById('walkthrough-text').textContent = s.text;
+  document.getElementById('btn-walkthrough-restart').classList.toggle('is-hidden', walkStage < 5);
+}
+
+function updateWalkthroughGate() {
+  const set = (id, on) => { document.getElementById(id).disabled = !on; };
+  if (walkStage >= 5) {
+    set('btn-start', state.power);
+    set('btn-stop', state.power);
+    set('btn-jam', state.power);
+    set('btn-reset', state.power);
+    return;
+  }
+  set('btn-start', state.power && walkStage === 2);
+  set('btn-stop', false);
+  set('btn-jam', state.power && (walkStage === 3 || walkStage === 4));
+  set('btn-reset', state.power && walkStage === 4);
+}
+
+function advanceWalkthrough() {
+  let changed = false;
+
+  if (walkStage === 1 && state.power) {
+    walkStage = 2;
+    changed = true;
+  }
+  if (walkStage === 2 && state.out.motor) {
+    walkStage = 3;
+    document.getElementById('ladder-legend').classList.remove('is-hidden');
+    document.getElementById('ladder-wrap').insertAdjacentHTML('beforeend', rung23Block());
+    changed = true;
+  }
+  if (walkStage === 3 && state.out.fault) {
+    walkStage = 4;
+    document.getElementById('ladder-wrap').insertAdjacentHTML('afterbegin', rung1Block());
+    walkRung1Revealed = true;
+    changed = true;
+  }
+  if (walkStage === 4 && !state.out.fault && walkRung1Revealed) {
+    walkStage = 5;
+    changed = true;
+  }
+
+  if (changed) updateWalkthroughPanel();
+  updateWalkthroughGate();
+}
+
+function restartWalkthrough() {
+  walkStage = 1;
+  walkRung1Revealed = false;
+  document.getElementById('ladder-wrap').innerHTML = '';
+  document.getElementById('ladder-legend').classList.add('is-hidden');
+  if (state.power) setPower(false);
+  updateWalkthroughPanel();
+  updateWalkthroughGate();
 }
 
 /* ---------- Rung evaluation (mirrors real PLC same-scan behavior:
@@ -258,6 +378,7 @@ function updateStatusBanner() {
   desc.textContent = d;
 
   updateConveyorVisual();
+  advanceWalkthrough();
 }
 
 /* ---------- Scan loop ---------- */
@@ -371,89 +492,14 @@ function bindPower() {
   document.getElementById('btn-power').addEventListener('click', () => setPower(!state.power));
 }
 
-/* ---------- Guided demo ---------- */
-
-function waitUntil(conditionFn, timeoutMs = 6000) {
-  return new Promise((resolve) => {
-    const start = Date.now();
-    const check = () => {
-      if (conditionFn()) {
-        resolve(true);
-      } else if (Date.now() - start > timeoutMs) {
-        resolve(false);
-      } else {
-        setTimeout(check, 60);
-      }
-    };
-    check();
-  });
-}
-
-function pressButton(btnId, holdMs = 150) {
-  return new Promise((resolve) => {
-    const btn = document.getElementById(btnId);
-    btn.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
-    setTimeout(() => {
-      btn.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }));
-      resolve();
-    }, holdMs);
-  });
-}
-
-function setControlsEnabled(enabled) {
-  ['btn-start', 'btn-stop', 'btn-jam', 'btn-reset', 'btn-power', 'btn-demo'].forEach((id) => {
-    document.getElementById(id).disabled = !enabled;
-  });
-}
-
-async function runGuidedDemo() {
-  const status = document.getElementById('demo-status');
-  setControlsEnabled(false);
-  document.getElementById('btn-demo').disabled = true;
-
-  if (!state.power) {
-    status.textContent = 'Powering on the PLC...';
-    setPower(true);
-    await wait(400);
-  }
-
-  status.textContent = 'Pressing Start. This starts the simulated conveyor motor.';
-  await pressButton('btn-start');
-  await waitUntil(() => state.out.run);
-  await wait(900);
-
-  status.textContent = 'Motor running. Now simulating a jam being sensed on the line...';
-  setToggle('btn-jam', 'jam', true);
-  const faultTripped = await waitUntil(() => state.out.fault);
-  await wait(1300);
-
-  if (!faultTripped) {
-    status.textContent = 'Demo timed out waiting for the fault to trip. Try again or use the controls manually.';
-    setToggle('btn-jam', 'jam', false);
-    setControlsEnabled(true);
-    return;
-  }
-
-  status.textContent = 'Fault tripped. The motor stopped and Start/Stop are locked out, same as the Pico trainer.';
-  await wait(1600);
-
-  status.textContent = 'Clearing the jam and pressing Reset to unlock it...';
-  setToggle('btn-jam', 'jam', false);
-  await pressButton('btn-reset');
-  await waitUntil(() => !state.out.fault);
-  await wait(600);
-
-  status.textContent = 'Done. System is back at ready. Try the controls yourself, or run it again.';
-  setControlsEnabled(true);
-}
-
-buildLadder();
 bindMomentary('btn-start', 'start');
 bindMomentary('btn-stop', 'stop');
 bindMomentary('btn-reset', 'reset');
 bindToggle('btn-jam', 'jam');
 bindPower();
-document.getElementById('btn-demo').addEventListener('click', runGuidedDemo);
+document.getElementById('btn-walkthrough-restart').addEventListener('click', restartWalkthrough);
 document.getElementById('power-label').textContent = 'PLC: PROG (Stopped)';
 document.getElementById('btn-power').classList.remove('on');
+updateWalkthroughPanel();
+updateWalkthroughGate();
 updateStatusBanner();

@@ -43,11 +43,6 @@
   <section class="sim-panel">
     <div class="container">
 
-      <div class="demo-row">
-        <button class="btn btn-primary" id="btn-demo">&#9654; Watch the fault-lockout demo</button>
-        <p class="demo-status" id="demo-status">Starts the line, trips a fault, and resets it automatically. No clicking required.</p>
-      </div>
-
       <div class="status-banner" id="status-banner">
         <span class="status-dot" id="status-dot"></span>
         <div class="status-text">
@@ -77,10 +72,12 @@
 
       <div class="sim-technical">
         <h2 class="section-title">The technical simulation</h2>
-        <p class="panel-note">
-          You don't need to read any of this to follow along, the picture above already told the story.
-          This is the real logic driving it, shown in standard industrial notation.
-        </p>
+
+        <div class="walkthrough-panel" id="walkthrough-panel">
+          <span class="walkthrough-step" id="walkthrough-step">Step 1 of 4</span>
+          <p class="walkthrough-text" id="walkthrough-text">Turn on the PLC to begin.</p>
+          <button class="walkthrough-restart is-hidden" id="btn-walkthrough-restart" type="button">&#8635; Restart walkthrough</button>
+        </div>
 
         <div class="panel-row">
           <div class="io-controls">
@@ -101,7 +98,7 @@
             <span class="io-dot"></span><span id="power-label">PLC: RUN</span>
           </button>
         </div>
-        <p class="io-hint">Or try it yourself: Start/Stop/Reset are momentary pushbuttons, Jam is a toggle switch like a held sensor.</p>
+        <p class="io-hint">Start/Stop/Reset are momentary pushbuttons, Jam is a toggle switch like a held sensor. Locked-out buttons unlock as you go.</p>
 
         <div class="scan-strip">
           <span class="scan-phase" id="phase-input">Input Scan</span>
@@ -112,7 +109,7 @@
           <span class="scan-meta" id="scan-counter">Scan #0</span>
         </div>
 
-        <div class="ladder-legend">
+        <div class="ladder-legend is-hidden" id="ladder-legend">
           <span class="legend-item"><span class="legend-sym">| |</span>a switch (contact) that lets power through when its condition is met</span>
           <span class="legend-item"><span class="legend-sym">|/|</span>a switch that's normally closed and opens when triggered (used for Stop, Fault, Reset)</span>
           <span class="legend-item"><span class="legend-sym">( )</span>an output (coil) that turns on when power reaches it</span>
@@ -134,69 +131,6 @@
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <section class="sim-explainer">
-    <div class="container">
-      <h2 class="section-title">How each rung maps to the Pico trainer</h2>
-      <div class="explainer-grid">
-
-        <div class="explainer-card">
-          <h3>Rung 1: Fault latch</h3>
-          <p>
-            The Jam contact sets the Fault coil, and a seal-in contact (Fault, in parallel with Jam) keeps
-            it energized on its own even after Jam clears, exactly like the Pico's fault-interlock logic
-            stayed latched in the Fault state until told otherwise. Only Reset breaks the seal. This is the
-            same behavior as the Pico's <code>state = "Fault"</code> holding until the reset switch was read.
-          </p>
-          <details>
-            <summary>Show the code</summary>
-            <code>if jam or fault:
-    fault = True and not reset</code>
-          </details>
-        </div>
-
-        <div class="explainer-card">
-          <h3>Rung 2: Start/Stop seal-in with fault interlock</h3>
-          <p>
-            This is the classic motor-starter circuit. Start energizes Run, a seal-in contact (Run) keeps it
-            energized after Start is released, and Stop breaks the seal. The Fault contact in series cuts
-            the whole rung the moment Fault is set, the same lockout the Pico enforced by disabling Start
-            and Stop whenever <code>state == "Fault"</code>.
-          </p>
-          <details>
-            <summary>Show the code</summary>
-            <code>if (start or run) and not stop and not fault:
-    run = True
-else:
-    run = False</code>
-          </details>
-        </div>
-
-        <div class="explainer-card">
-          <h3>Rung 3: Motor output</h3>
-          <p>
-            A direct output. Run energizes the Motor coil, mirroring the Pico's status LEDs turning on when
-            it entered the Running state.
-          </p>
-          <details>
-            <summary>Show the code</summary>
-            <code>motor = run</code>
-          </details>
-        </div>
-
-        <div class="explainer-card">
-          <h3>What's simplified here</h3>
-          <p>
-            The Pico trainer requires holding the Jam switch for 2 seconds before it counts as a fault
-            (debounce), so a quick bump doesn't trip it. A real PLC would do that with a timer instruction
-            (TON). I left that out here on purpose, to keep the diagram focused on scan-cycle behavior and
-            NO/NC contact logic, the two core concepts this project is built to demonstrate.
-          </p>
-        </div>
-
-      </div>
     </div>
   </section>
 

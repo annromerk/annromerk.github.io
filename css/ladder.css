@@ -93,6 +93,12 @@
 .io-btn:hover { border-color: var(--accent); color: var(--accent); }
 .io-btn.toggle-jam:hover { border-color: #d64545; color: #d64545; }
 
+.io-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .io-btn .io-dot {
   width: 14px;
   height: 14px;
@@ -159,11 +165,7 @@
   margin: 0 0 12px;
 }
 
-.demo-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+.walkthrough-panel {
   padding: 18px 20px;
   margin-bottom: 24px;
   background: var(--accent-soft);
@@ -171,22 +173,39 @@
   border-radius: var(--radius);
 }
 
-.demo-row .btn {
-  padding: 11px 20px;
-  font-size: 0.9rem;
-  flex-shrink: 0;
+.walkthrough-step {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
-.demo-row .btn:disabled {
-  opacity: 0.6;
-  cursor: default;
-}
-
-.demo-status {
+.walkthrough-text {
   margin: 0;
-  font-size: 0.88rem;
-  color: var(--text-dim);
+  font-size: 0.95rem;
+  color: var(--text);
 }
+
+.walkthrough-restart {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 9px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.walkthrough-restart:hover { border-color: var(--accent); color: var(--accent); }
 
 /* Plain-language status banner */
 .status-banner {
@@ -233,13 +252,6 @@
 .status-text span {
   font-size: 0.9rem;
   color: var(--text-dim);
-}
-
-.panel-note {
-  font-size: 0.82rem;
-  color: var(--text-dim);
-  margin: 0 0 24px;
-  font-style: italic;
 }
 
 /* Conveyor visual — physical picture of the same state the status banner describes */
@@ -376,6 +388,8 @@
   }
 }
 
+.is-hidden { display: none !important; }
+
 /* Ladder legend */
 .ladder-legend {
   display: flex;
@@ -456,13 +470,55 @@
   padding: 20px 24px 8px;
   overflow-x: auto;
 }
+.ladder-wrap:empty {
+  display: none;
+}
 
-.rung-block { margin-bottom: 4px; }
+.rung-block {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.rung-block:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
 .rung-num {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--text-dim);
   margin: 0 0 2px 2px;
+}
+
+.rung-explain {
+  margin: 10px 2px 0;
+  max-width: 68ch;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.rung-block summary {
+  margin: 8px 2px 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  user-select: none;
+}
+.rung-block summary::marker { color: var(--accent); }
+
+.rung-block details code {
+  display: block;
+  margin: 10px 2px 0;
+  padding: 10px 12px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text);
+  white-space: pre-wrap;
 }
 
 .rung-svg { width: 100%; min-width: 640px; height: auto; display: block; }
@@ -570,63 +626,6 @@
 
 .lamp-text strong { display: block; font-size: 0.95rem; }
 .lamp-text span { font-size: 0.8rem; color: var(--text-dim); }
-
-/* Explainer */
-.sim-explainer {
-  padding: 8px 0 72px;
-}
-
-.explainer-grid {
-  display: grid;
-  gap: 18px;
-}
-
-.explainer-card {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px 22px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.explainer-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06), 0 18px 34px rgba(15, 23, 42, 0.08);
-}
-
-.explainer-card h3 {
-  margin: 0 0 8px;
-  font-size: 1rem;
-  line-height: 1.3;
-}
-
-.explainer-card p {
-  margin: 0;
-  color: var(--text-dim);
-  font-size: 0.92rem;
-}
-
-.explainer-card summary {
-  margin-top: 10px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--accent);
-  cursor: pointer;
-  user-select: none;
-}
-.explainer-card summary::marker { color: var(--accent); }
-
-.explainer-card code {
-  display: block;
-  margin-top: 10px;
-  padding: 10px 12px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--text);
-  white-space: pre-wrap;
-}
 
 @media (max-width: 720px) {
   .panel-row { flex-direction: column; align-items: flex-start; }
