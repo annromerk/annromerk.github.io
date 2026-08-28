@@ -513,6 +513,12 @@ img { max-width: 100%; display: block; }
 }
 
 /* Testimonial */
+.testimonial-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .testimonial-card {
   max-width: 760px;
   border-left: 4px solid var(--accent);

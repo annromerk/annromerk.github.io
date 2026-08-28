@@ -7,7 +7,7 @@ export const heroStats = [
 export const tocItems = [
   { id: 'about', label: 'About' },
   { id: 'project', label: 'Projects' },
-  { id: 'recommendation', label: 'Recommendation' },
+  { id: 'recommendation', label: 'Recommendations' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
   { id: 'certifications', label: 'Certifications' },
@@ -19,13 +19,29 @@ export const aboutParagraphs = [
   `In 2026 I taught myself the basics and built a working fault-simulation trainer to prove I could take it from theory to actual hardware. Now I'm looking for a Mechatronics & Robotics Apprenticeship or similar maintenance role, learning under experienced RME technicians.`,
 ];
 
-export const recommendation = {
-  quote: `"He took ownership of the login page design and truly excelled in this area, diving deep into design principles and creating something he could be genuinely proud of. Despite facing significant time management challenges due to his demanding role at Amazon during Prime Day, Anthony remained committed to the project and continued pushing forward. He also tackled one of his biggest growth areas—mastering Git—showing remarkable determination to expand his technical toolkit even when time was limited."`,
-  name: 'Naomi Carrigan',
-  role: 'Senior Software Engineer & Founder of NHCarrigan',
-  context: 'Hackathon mentor · LinkedIn recommendation, July 2025',
-  avatarSrc: '/assets/images/naomi-carrigan.jpg',
-};
+export interface Recommendation {
+  quote: string;
+  name: string;
+  role: string;
+  context: string;
+  avatarSrc?: string;
+}
+
+export const recommendations: Recommendation[] = [
+  {
+    quote: `"He took ownership of the login page design and truly excelled in this area, diving deep into design principles and creating something he could be genuinely proud of. Despite facing significant time management challenges due to his demanding role at Amazon during Prime Day, Anthony remained committed to the project and continued pushing forward. He also tackled one of his biggest growth areas—mastering Git—showing remarkable determination to expand his technical toolkit even when time was limited."`,
+    name: 'Naomi Carrigan',
+    role: 'Senior Software Engineer & Founder of NHCarrigan',
+    context: 'Hackathon mentor · LinkedIn recommendation, July 2025',
+    avatarSrc: '/assets/images/naomi-carrigan.jpg',
+  },
+  {
+    quote: `"It was a pleasure being Anthony's supervisor at DCX8 Delivery Station. Throughout my time working with him, he consistently demonstrated initiative, reliability, a strong eagerness to learn, and adaptability. He brings a genuine teamwork mentality, while also proving he can take ownership of tasks independently and meet deadlines on his own. His strong communication skills allow him to convey and receive information clearly, accurately, and effectively. Given his drive to learn and grow, Anthony would be a valuable addition to any Mechatronic Apprentice team."`,
+    name: 'Brenda Munguia',
+    role: 'Learning Trainer, Amazon.com Services LLC',
+    context: 'Former supervisor (Process Assistant) at DCX8 Delivery Station · Slack message',
+  },
+];
 
 export interface TimelineItem {
   date: string;
