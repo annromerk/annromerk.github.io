@@ -482,6 +482,12 @@ img { max-width: 100%; display: block; }
 .section-alt .tag-list li { background: var(--bg); }
 
 /* Testimonial */
+.testimonials-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .testimonial {
   margin: 0;
   max-width: 760px;
