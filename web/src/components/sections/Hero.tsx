@@ -3,6 +3,7 @@ import { ContactRow } from '@/components/ContactRow';
 import { ScrollCueIcon } from '@/components/icons';
 import { HeroStat } from '@/components/sections/HeroStat';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import { heroStats } from '@/content/site';
 import { useSmoothScrollTo } from '@/hooks/useSmoothScrollTo';
 
@@ -40,9 +41,12 @@ export function Hero() {
               </Avatar>
               <div>
                 <h1>Anthony Romero</h1>
-                <p className="hero-tagline">Mechatronics &amp; Robotics Apprentice Candidate</p>
+                <p className="hero-tagline">Mechatronics &amp; Robotics Apprentice, Amazon RME</p>
               </div>
             </div>
+            <Badge variant="default" className="hero-status-badge h-auto px-3 py-1.5 text-[0.8rem] font-semibold">
+              Starts August 27, 2026
+            </Badge>
             <ContactRow />
           </m.div>
 

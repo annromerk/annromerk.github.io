@@ -16,7 +16,7 @@ export const tocItems = [
 
 export const aboutParagraphs = [
   `I got my start in construction trades and warehouse work, and got good at catching problems early: a safety hazard, a worn part, a tool about to fail. That's what pulled me toward mechatronics.`,
-  `In 2026 I taught myself the basics and built a working fault-simulation trainer to prove I could take it from theory to actual hardware. Now I'm looking for a Mechatronics & Robotics Apprenticeship or similar maintenance role, learning under experienced RME technicians.`,
+  `In 2026 I taught myself the basics and built a working fault-simulation trainer to prove I could take it from theory to actual hardware. That work paid off: I accepted a Mechatronics & Robotics Apprenticeship with Amazon RME and start August 27, 2026, learning under experienced RME technicians.`,
 ];
 
 export interface Recommendation {
@@ -202,8 +202,8 @@ export const faqs = [
     a: 'Yes. Hope Builders required **basic math and algebra** just to qualify for the program, and **Construction Math** was part of the curriculum alongside blueprint reading and framing.',
   },
   {
-    q: 'When could you start?',
-    a: "**Immediately.** I don't have a notice period or scheduling conflict on my end, so timing is flexible and works around your team's.",
+    q: 'When do you start?',
+    a: '**August 27, 2026.** I accepted the offer and I’m looking forward to getting started as a Mechatronics & Robotics Apprentice with Amazon RME.',
   },
   {
     q: 'Can you provide references?',
