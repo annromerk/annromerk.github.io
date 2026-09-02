@@ -17,6 +17,7 @@ export const tocItems = [
 export const aboutParagraphs = [
   `I got my start in construction trades and warehouse work, and got good at catching problems early: a safety hazard, a worn part, a tool about to fail. That's what pulled me toward mechatronics.`,
   `In 2026 I taught myself the basics and built a working fault-simulation trainer to prove I could take it from theory to actual hardware. That work paid off: I accepted a Mechatronics & Robotics Apprenticeship with Amazon RME and start August 27, 2026, learning under experienced RME technicians.`,
+  `Longer term, my goal is to grow from MRA into an Automation Engineer Apprentice (AEA) role within Amazon RME.`,
 ];
 
 export interface Recommendation {
