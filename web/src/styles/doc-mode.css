@@ -1,9 +1,4 @@
-/* EXPERIMENTAL — "read like a document" site-wide layer.
-   Adds a reading-progress bar, a scroll-tracking table of contents, and
-   document-style section numbering. Reuses the existing color/type tokens
-   on purpose — this is a structural layer, not a reskin.
-   Isolated: remove the two <link>/<script> tags in index.html, the
-   .doc-toc/.doc-progress markup, and delete these two files to revert. */
+/* Reading progress and desktop table of contents. */
 
 .doc-progress {
   position: fixed;
@@ -77,33 +72,4 @@
     font-weight: 700;
     border-left-color: var(--accent);
   }
-
-  .doc-toc-num {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-dim);
-    opacity: 0.7;
-  }
-  .doc-toc a.is-active .doc-toc-num {
-    color: var(--accent);
-    opacity: 1;
-  }
-}
-
-/* Document-style section numbering — counts every numbered section's
-   .section-title, skipping the hero (which isn't a .section). */
-body.doc-mode main {
-  counter-reset: doc-section;
-}
-body.doc-mode .section .section-title {
-  counter-increment: doc-section;
-}
-body.doc-mode .section .section-title::before {
-  content: "0" counter(doc-section);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-right: 4px;
-  order: -1;
 }

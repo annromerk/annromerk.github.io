@@ -53,113 +53,51 @@ img { max-width: 100%; display: block; }
   padding: 0 24px;
 }
 
-/* Hero — bento grid */
+/* Hero */
 .hero {
-  position: relative;
-  padding: 56px 0 96px;
-  background: var(--bg);
-}
-
-.hero-inner { max-width: 880px; }
-
-.hero-eyebrow {
-  display: block;
-  margin: 0 0 14px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.hero-bento {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  grid-template-areas:
-    'profile stat1'
-    'profile stat2'
-    'profile stat3';
-  gap: 14px;
-}
-
-.hero-tile {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-}
-
-.hero-profile-tile {
-  grid-area: profile;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 18px;
-  padding: 32px;
-}
-
-.hero-identity {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.hero-avatar {
-  flex-shrink: 0;
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  border: 3px solid var(--bg);
-  box-shadow: 0 0 0 6px var(--accent-soft);
+  padding: clamp(48px, 8vw, 96px) 0 40px;
+  border-bottom: 1px solid var(--border);
 }
 
 .hero h1 {
-  font-size: clamp(1.7rem, 4vw, 2.2rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
   margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
 }
 
 .hero-tagline {
-  margin: 4px 0 0;
-  font-size: 1rem;
+  margin: 10px 0 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 500;
-  color: var(--text-dim);
 }
 
-.hero-stat-tile {
+.hero-start-date {
+  margin: 4px 0 18px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.hero-stats {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
-  padding: 18px 22px;
-}
-.hero-stat-tile--1 { grid-area: stat1; }
-.hero-stat-tile--2 { grid-area: stat2; }
-.hero-stat-tile--3 { grid-area: stat3; }
-
-.stat-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  opacity: 0.8;
+  flex-wrap: wrap;
+  gap: 16px clamp(24px, 5vw, 56px);
+  list-style: none;
+  padding: 20px 0 0;
+  margin: 28px 0 0;
+  border-top: 1px solid var(--border);
 }
 
 .stat-number {
-  font-family: var(--font-mono);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent);
+  display: block;
+  font-size: 1.4rem;
+  color: var(--text);
   line-height: 1.25;
 }
 
 .stat-label {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--text-dim);
 }
 
@@ -170,43 +108,6 @@ img { max-width: 100%; display: block; }
   gap: 10px;
   margin-top: 4px;
 }
-
-@media (max-width: 720px) {
-  .hero-bento {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-      'profile profile profile'
-      'stat1 stat2 stat3';
-  }
-  .hero-profile-tile { padding: 24px; }
-  .hero-stat-tile { padding: 16px 14px; }
-  .stat-number { font-size: 1.5rem; }
-}
-
-@media (max-width: 520px) {
-  .hero-bento {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'profile'
-      'stat1'
-      'stat2'
-      'stat3';
-  }
-  .hero-identity { flex-direction: column; align-items: flex-start; }
-}
-
-.scroll-cue {
-  position: absolute;
-  left: 50%;
-  bottom: 14px;
-  transform: translateX(-50%);
-  padding: 14px;
-  color: var(--text-dim);
-  opacity: 0.6;
-  transition: color 0.15s ease, opacity 0.15s ease;
-}
-.scroll-cue:hover { color: var(--accent); opacity: 1; }
-.scroll-cue svg { width: 20px; height: 20px; display: block; }
 
 .btn {
   display: inline-flex;
@@ -484,17 +385,6 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
   padding: 22px;
-}
-
-.skill-eyebrow {
-  display: block;
-  margin: 0 0 8px;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--text-dim);
-  opacity: 0.8;
 }
 
 .skill-group h3 {

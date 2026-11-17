@@ -11,7 +11,7 @@ export function DocToc() {
   return (
     <nav className="doc-toc" aria-label="Table of contents">
       <span className="doc-toc-eyebrow">Contents</span>
-      {tocItems.map((item, i) => (
+      {tocItems.map((item) => (
         <a
           key={item.id}
           href={`#${item.id}`}
@@ -19,7 +19,6 @@ export function DocToc() {
           className={activeId === item.id ? 'is-active' : undefined}
           onClick={scrollTo(item.id)}
         >
-          <span className="doc-toc-num">{String(i + 1).padStart(2, '0')}</span>
           {item.label}
         </a>
       ))}
