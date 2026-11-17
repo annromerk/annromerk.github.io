@@ -35,7 +35,7 @@ export const recommendations: Recommendation[] = [
     name: 'Brenda Munguia',
     avatarFallback: 'amazon',
     role: 'Learning Trainer, Amazon.com Services LLC',
-    context: 'Former supervisor (Process Assistant) at DCX8 Delivery Station · Slack message',
+    context: 'Former supervisor (Process Assistant) at DCX8 Delivery Station',
   },
 ];
 
