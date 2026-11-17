@@ -70,9 +70,7 @@ export const timeline: TimelineItem[] = [
     bullets: [
       'Reported **conveyor speed and mechanical wear** after noticing packages overshooting hampers, giving maintenance a chance to investigate before a breakdown',
       'Escalated a **blocked fire extinguisher** to site safety and maintenance. Earned 4 Safe & Secure awards and a Bias for Action pin',
-      'Checked that **scanners and handheld devices worked and were updated** before each shift',
       'Developed a U-boat pre-staging method that **cut end-of-shift compaction from 10+ U-boats to zero**, freeing up 3 associates for other work',
-      'Sustained **500–550 units/hour in stow, 25% above site average**, across **flexible shifts including nights and weekends**',
     ],
   },
   {
@@ -85,9 +83,8 @@ export const timeline: TimelineItem[] = [
       alt: 'Sun Country Builders logo',
     },
     bullets: [
-      'Assisted with framing and drywall installation on Azure Apartments, an **87-unit affordable housing conversion** in Anaheim',
-      '**Read blueprints and took field measurements**, flagging code and quality issues before sign-off during job site walkarounds with the superintendent',
-      'Inspected and maintained tools before each use, including blade changes and ladder/scaffolding checks, per site safety protocol',
+      '**Read blueprints and took field measurements**, and flagged code and quality issues during site walkthroughs.',
+      '**Inspected and maintained tools** before use, including changing blades and checking ladders and scaffolding.',
     ],
   },
   {
@@ -101,9 +98,7 @@ export const timeline: TimelineItem[] = [
       alt: 'Hope Builders logo',
     },
     bullets: [
-      'Completed full-time construction trades training covering carpentry, electrical basics, **construction math**, safety, and materials handling',
-      'Earned **OSHA-10 and Heartsaver CPR/AED** certifications',
-      'Served as **team lead** on a carpentry demolition project, directing task sequencing among trainees to stay on schedule',
+      'Completed vocational training in **electrical basics, construction math, and jobsite safety**. Earned OSHA-10 and Heartsaver CPR/AED certifications.',
     ],
   },
   {
@@ -113,8 +108,7 @@ export const timeline: TimelineItem[] = [
     org: 'Independent Residential Work',
     badge: { kind: 'text', text: 'IR' },
     bullets: [
-      'Completed carpentry, repair, and installation jobs across multiple residential clients, **managing scheduling and safety independently**',
-      '**Troubleshot and resolved** issues with door hardware, light fixtures, and other household components',
+      '**Troubleshot and repaired** door hardware, light fixtures, and other household components.',
     ],
   },
 ];
