@@ -41,10 +41,8 @@ export function Projects() {
               <p className="project-tag">Self-Directed Technical Project · Jun–Jul 2026</p>
               <h3>Raspberry Pi Pico Fault-Simulation Trainer</h3>
               <p>
-                I studied mechatronics fundamentals on my own (electrical basics, sensors, control logic) and
-                built a physical trainer to put that knowledge into practice: a control panel that simulates
-                the kind of conveyor faults I encounter on the warehouse floor, so I could learn to detect and
-                diagnose them the way a maintenance technician would.
+                I built a bench trainer to practice how a conveyor control system responds to a jam. A
+                switch simulates the jam input, and LEDs and a buzzer show how the system responds.
               </p>
               <ul className="project-points">
                 <li>
@@ -53,11 +51,10 @@ export function Projects() {
                   breadboard
                 </li>
                 <li>
-                  <RichText text="Programmed fault-interlock state machine logic (Stopped → Running → Fault) that locks out Start and Stop once a fault trips, requiring Reset to clear it. This **mirrors real equipment lockout behavior** and includes a 2-second hold-to-trigger debounce on the jam input" />
+                  <RichText text="Programmed a **latched fault** that blocks Start and Stop until Reset. The jam input must stay active for two seconds before it trips." />
                 </li>
                 <li>
-                  Built entirely outside of coursework, driven by direct experience with MHE (material
-                  handling equipment) on the job
+                  The demo shows the alarm activating and Reset returning the trainer to Stopped.
                 </li>
               </ul>
 
@@ -65,17 +62,14 @@ export function Projects() {
                 <p className="how-it-works-label">How it works</p>
                 <ol>
                   <li>
-                    Power on and the system boots into <strong>Stopped</strong>. Nothing moves until Start is
-                    pressed.
+                    Power on and the trainer boots into <strong>Stopped</strong>.
                   </li>
                   <li>
                     Press Start and it moves to <strong>Running</strong>: the green and yellow LEDs come on,
                     simulating the conveyor moving.
                   </li>
                   <li>
-                    Holding the Jam switch for 2 seconds trips a fault. That hold time is on purpose, so a
-                    quick bump doesn&apos;t set it off, the same way a real sensor signal has to hold steady
-                    before it&apos;s trusted.
+                    Hold the Jam switch for two seconds to trip a fault. A shorter input does not trigger it.
                   </li>
                   <li>
                     Once faulted, the red LED and buzzer turn on, and Start and Stop are both locked out until
@@ -86,10 +80,6 @@ export function Projects() {
                     Stopped, ready to go again.
                   </li>
                 </ol>
-                <p className="how-it-works-note">
-                  That&apos;s the same pattern real MHE controls use: detect the fault, alarm on it, and lock
-                  the equipment down until someone deals with it.
-                </p>
               </div>
 
               <div className="project-meta">
@@ -119,20 +109,18 @@ export function Projects() {
               <p className="project-tag">Self-Directed Learning Project · Aug 2026</p>
               <h3>Ladder Logic Simulator</h3>
               <p>
-                After completing a Master PLC Programming course, I built this interactive simulator to put
-                what I learned into practice. It models real scan-cycle timing and NO/NC contact behavior, and
-                translates the fault-interlock state machine from my Raspberry Pi Pico trainer above into
-                Allen-Bradley/RSLogix-style ladder notation.
+                After a PLC programming course, I built a browser simulator that recreates the conveyor
+                trainer&apos;s fault and reset sequence in Allen-Bradley-style ladder logic.
               </p>
               <ul className="project-points">
                 <li>
-                  <RichText text="Modeled a real **Input Scan → Program Scan → Output Scan** cycle instead of instant updates, so the diagram behaves the way an actual PLC does" />
+                  <RichText text="Modeled a **PLC scan cycle** in three stages: read inputs, evaluate the ladder logic, then update outputs." />
                 </li>
                 <li>
-                  <RichText text="Built a **Start/Stop motor-starter circuit** with seal-in and fault interlock, the same lockout-until-Reset pattern as the Pico trainer, in standard 3-rung ladder form" />
+                  <RichText text="Simulated a **three-rung motor start/stop circuit** with a seal-in branch, a latched fault, and a reset input." />
                 </li>
                 <li>
-                  <RichText text="Used correct **NO/NC contact semantics and Allen-Bradley/RSLogix notation** (XIC, XIO, OTE), the North American industry standard" />
+                  Used XIC, XIO, and OTE instructions to show how input bits and output states change during a fault.
                 </li>
               </ul>
               <div className="project-meta">

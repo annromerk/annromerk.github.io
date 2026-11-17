@@ -1,23 +1,21 @@
 export const heroStats = [
-  { value: 3, suffix: '+', label: 'Years hands-on experience' },
-  { value: 3, suffix: '', label: 'Projects built' },
-  { value: 7, suffix: '', label: 'Certifications earned' },
+  { value: 4, suffix: '', label: 'Amazon Safe & Secure awards' },
+  { value: 2, suffix: '', label: 'Controls projects' },
 ] as const;
 
 export const tocItems = [
   { id: 'about', label: 'About' },
-  { id: 'project', label: 'Projects' },
-  { id: 'recommendation', label: 'Recommendations' },
   { id: 'experience', label: 'Experience' },
+  { id: 'project', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'certifications', label: 'Certifications' },
+  { id: 'recommendation', label: 'Recommendations' },
   { id: 'faq', label: 'FAQ' },
 ] as const;
 
 export const aboutParagraphs = [
-  `I got my start in construction trades and warehouse work, and got good at catching problems early: a safety hazard, a worn part, a tool about to fail. That's what pulled me toward mechatronics.`,
-  `I taught myself the basics of mechatronics and built a conveyor fault simulator with a Raspberry Pi Pico. On September 27, 2026, I moved from Amazon delivery operations into Reliability Maintenance & Engineering (RME) as a Mechatronic Apprentice I.`,
-  `Longer term, my goal is to grow from MRA into an Automation Engineer Apprentice (AEA) role within Amazon RME.`,
+  `I moved from Amazon delivery operations into Reliability Maintenance & Engineering (RME) in September 2026. My background includes inspecting tools, reading construction drawings, and reporting conveyor wear and safety hazards on the warehouse floor.`,
+  `I'm building experience in electrical and mechanical troubleshooting, preventive maintenance, and verifying equipment after a repair. To practice controls on my own, I built a Raspberry Pi Pico conveyor fault trainer and a PLC ladder logic simulator.`,
 ];
 
 export interface Recommendation {
@@ -62,7 +60,10 @@ export const timeline: TimelineItem[] = [
     title: 'Mechatronic Apprentice I',
     org: 'Amazon · Reliability Maintenance & Engineering',
     badge: { kind: 'amazon' },
-    bullets: ['Promoted from Amazon delivery station operations on September 27, 2026.'],
+    bullets: [
+      'Promoted from Amazon delivery station operations on September 27, 2026.',
+      'Completed **NFPA 70E electrical safety training**, **AR Robin Zones 1 & 2**, and **Amnesty Blitz** through Amazon.',
+    ],
   },
   {
     date: 'Nov 2024 – Sep 2026',
@@ -71,10 +72,10 @@ export const timeline: TimelineItem[] = [
     org: 'Amazon.com Services LLC',
     badge: { kind: 'amazon' },
     bullets: [
-      'Identified and escalated a blocked fire extinguisher OSHA violation (29 CFR 1910.157(c)(1)); closed by WHS/RME, earning **4 Safe and Secure awards and a Bias for Action pin**',
-      'Spotted a warehouse-wide conveyor speed issue and reported the resulting **mechanical wear before it caused equipment failure**',
-      'Developed a continuous-improvement U-boat pre-staging method that **cut end-of-shift compaction from 10+ U-boats to zero**, freeing up 3 associates for other workflow',
-      'Verified scanners and handheld devices were functional before every shift, **ensuring equipment availability and preventing workflow disruption**',
+      'Reported **conveyor speed and mechanical wear** after noticing packages overshooting hampers, giving maintenance a chance to investigate before a breakdown',
+      'Escalated a **blocked fire extinguisher** to site safety and maintenance. Earned 4 Safe & Secure awards and a Bias for Action pin',
+      'Checked that **scanners and handheld devices worked and were updated** before each shift',
+      'Developed a U-boat pre-staging method that **cut end-of-shift compaction from 10+ U-boats to zero**, freeing up 3 associates for other work',
       'Sustained **500–550 units/hour in stow, 25% above site average**, across **flexible shifts including nights and weekends**',
     ],
   },
@@ -124,40 +125,38 @@ export const timeline: TimelineItem[] = [
 
 export const skillGroups = [
   {
-    title: 'Maintenance & Troubleshooting',
+    title: 'Equipment & Troubleshooting',
     tags: [
-      'Mechanical & Electrical Troubleshooting',
-      'Equipment Fault Diagnosis',
-      'Conveyor & MHE Systems',
-      'Preventative & Predictive Maintenance',
-      'Blueprint Reading & Measurement Interpretation',
-      'Electrical Schematic Reading (Ladder Diagrams)',
-      'Tool & Equipment Maintenance',
+      'Conveyor & Material Handling Equipment Familiarity',
+      'Tool Inspection & Maintenance',
+      'Blueprint Reading & Field Measurements',
+      'Residential Mechanical & Electrical Repair',
     ],
   },
   {
-    title: 'Safety & Compliance',
+    title: 'Controls Projects',
     tags: [
-      'Safety Hazard Identification & Reporting',
-      'SOP Compliance & Verification',
-      'Operational Excellence',
+      'Raspberry Pi Pico & GPIO Wiring',
+      'PLC Ladder Logic Simulation',
+      'Start, Stop, Fault & Reset Logic',
+      'Simulated Fault Testing',
+    ],
+  },
+  {
+    title: 'Safety & Maintenance Training',
+    tags: [
+      'NFPA 70E Electrical Safety Training',
+      'Hazard Identification & Escalation',
+      'AR Robin & Robotics Floor Safety Training',
+      'Preventive Maintenance Fundamentals',
     ],
   },
   {
     title: 'Operations',
     tags: [
-      'Metrics Tracking & Reporting',
-      'Workflow & Production Goal Management',
-      'Work Area Organization',
-      'Flexible Scheduling & Overtime',
-    ],
-  },
-  {
-    title: 'Applied Thinking',
-    tags: [
-      'Independent Judgment & Decision Making',
-      'Problem Solving & Analytical Thinking',
-      'Cross-Functional Communication',
+      'Equipment Readiness Checks',
+      'Process Improvement',
+      'Shift Coordination',
       'Microsoft Office (Word, Excel, Outlook)',
     ],
   },
@@ -191,28 +190,12 @@ export const certifications = [
 
 export const faqs = [
   {
-    q: 'Have you completed the Mechanical Aptitude Test for this program?',
-    a: "Yes. I've already **taken and passed the Mechanical Aptitude Test** through OnDemand Assessment as part of this hiring process.",
-  },
-  {
-    q: 'Have you done classroom-style training before?',
-    a: 'Yes. At Hope Builders I completed training that combined **classroom workshops with on-the-job learning**, the same format this apprenticeship uses.',
-  },
-  {
-    q: 'Do you have hands-on experience with industrial controls or PLCs?',
-    a: 'Yes. I completed a **Master PLC Programming** course, then built a **ladder logic simulator** to put that learning into practice, translating the same fault-interlock logic from my Raspberry Pi Pico trainer into real ladder notation. All of it came from what I was already seeing on the floor at Amazon.',
+    q: 'What controls work do your projects demonstrate?',
+    a: 'I wired a Raspberry Pi Pico trainer and built a browser-based ladder logic simulator. Both demonstrate how a simulated conveyor responds to a jam, how the fault stays latched, and what reset does before a restart. The PLC work is a simulation.',
   },
   {
     q: 'What robotics training have you completed?',
     a: 'At Amazon, I earned internal certifications for **AR Robin Zones 1 & 2** and **Amnesty Blitz**. My personal projects focus on controls, including fault interlocks, ladder logic, and PLC scan cycles.',
-  },
-  {
-    q: 'How do I know these projects are actually yours?',
-    a: 'Fair question. The **ladder logic simulator is live on this page**, not a screenshot. Click Jam and watch the fault-interlock lock everything out, then hit Reset and watch it recover.',
-  },
-  {
-    q: 'Do you have a math background for this kind of work?',
-    a: 'Yes. Hope Builders required **basic math and algebra** just to qualify for the program, and **Construction Math** was part of the curriculum alongside blueprint reading and framing.',
   },
   {
     q: 'When did you join Amazon RME?',

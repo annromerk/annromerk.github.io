@@ -9,7 +9,7 @@ export function Faq() {
       <div className="container">
         <h2 className="section-title">
           <FaqIcon />
-          Things You Might Be Wondering
+          FAQ
         </h2>
         <Accordion className="faq-accordion" multiple>
           {faqs.map((item, i) => (

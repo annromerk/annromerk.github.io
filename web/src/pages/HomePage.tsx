@@ -27,19 +27,19 @@ export function HomePage() {
           <About />
         </Reveal>
         <Reveal>
-          <Projects />
-        </Reveal>
-        <Reveal>
-          <Recommendation />
-        </Reveal>
-        <Reveal>
           <Experience />
+        </Reveal>
+        <Reveal>
+          <Projects />
         </Reveal>
         <Reveal>
           <Skills />
         </Reveal>
         <Reveal>
           <Certifications />
+        </Reveal>
+        <Reveal>
+          <Recommendation />
         </Reveal>
         <Reveal>
           <Faq />
