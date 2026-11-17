@@ -1,7 +1,7 @@
 export const heroStats = [
   { value: 3, suffix: '+', label: 'Years hands-on experience' },
   { value: 3, suffix: '', label: 'Projects built' },
-  { value: 5, suffix: '', label: 'Certifications earned' },
+  { value: 6, suffix: '', label: 'Certifications earned' },
 ] as const;
 
 export const tocItems = [
@@ -164,6 +164,14 @@ export const skillGroups = [
 ];
 
 export const certifications = [
+  {
+    title: 'AR Robin, Zones 1 & 2',
+    org: 'Amazon internal training on the Robin robotic package sorting system',
+  },
+  {
+    title: 'Amnesty Blitz',
+    org: 'Amazon internal training for robotics floor cleanup and retrieval of dropped items',
+  },
   { title: 'OSHA-10 Construction Safety and Health', org: 'Hope Builders' },
   {
     title: 'Heartsaver First Aid CPR AED',
@@ -194,8 +202,8 @@ export const faqs = [
     a: 'Yes. I completed a **Master PLC Programming** course, then built a **ladder logic simulator** to put that learning into practice, translating the same fault-interlock logic from my Raspberry Pi Pico trainer into real ladder notation. All of it came from what I was already seeing on the floor at Amazon.',
   },
   {
-    q: 'Do you have hands-on experience with robotics specifically?',
-    a: "Not with robotic hardware yet. My hands-on work so far has been **PLC and controls-focused** (fault-interlock logic, ladder programming, scan-cycle timing), the same control-systems foundation robotic material handling equipment runs on, and it's exactly what I want to build on inside RME.",
+    q: 'What robotics training have you completed?',
+    a: 'At Amazon, I earned internal certifications for **AR Robin Zones 1 & 2** and **Amnesty Blitz**. My personal projects focus on controls, including fault interlocks, ladder logic, and PLC scan cycles.',
   },
   {
     q: 'How do I know these projects are actually yours?',
