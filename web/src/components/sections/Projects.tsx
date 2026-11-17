@@ -28,8 +28,10 @@ export function Projects() {
               <video
                 className="project-video"
                 controls
-                preload="metadata"
+                preload="none"
                 playsInline
+                aria-label="Raspberry Pi Pico conveyor fault trainer demo"
+                aria-describedby="pico-demo-description"
                 poster="/assets/video/pi-trainer-poster.jpg"
               >
                 <source src="/assets/video/pi-trainer-demo.mp4" type="video/mp4" />
@@ -58,7 +60,7 @@ export function Projects() {
                 </li>
               </ul>
 
-              <div className="how-it-works">
+              <div className="how-it-works" id="pico-demo-description">
                 <p className="how-it-works-label">How it works</p>
                 <ol>
                   <li>
@@ -177,7 +179,7 @@ export function Projects() {
                 className={cn(buttonVariants({ variant: 'outline' }), 'mt-1.5 h-auto px-4 py-2.5 text-[0.9rem]')}
                 href="https://github.com/nhcarrigan-2025-hackathon/yellow-packet"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
                 View repository on GitHub →
               </a>

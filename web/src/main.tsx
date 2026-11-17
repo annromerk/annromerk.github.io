@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { HomePage } from './pages/HomePage';
 
+history.scrollRestoration = 'manual';
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <LazyMotion features={domAnimation} strict>

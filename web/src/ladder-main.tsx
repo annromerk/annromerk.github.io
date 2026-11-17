@@ -4,6 +4,8 @@ import './index.css';
 import './styles/ladder.css';
 import { LadderPage } from './pages/LadderPage';
 
+history.scrollRestoration = 'manual';
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <LadderPage />

@@ -18,6 +18,18 @@
 
 html { scroll-behavior: smooth; }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 3px;
+}
+
+h1, h2, h3 { text-wrap: balance; }
+section[id] { scroll-margin-top: 16px; }
+
 body {
   margin: 0;
   font-family: var(--font-body);

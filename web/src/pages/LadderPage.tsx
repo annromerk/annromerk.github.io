@@ -1,4 +1,5 @@
 import { Footer } from '@/components/Footer';
+import type { MouseEvent } from 'react';
 import { Rung1Block, Rung23Block } from '@/components/ladder/RungBlocks';
 import { WALK_STEPS } from '@/content/ladderWalkthrough';
 import { statusBanner, walkthroughGate } from '@/ladder/derived';
@@ -15,6 +16,14 @@ export function LadderPage() {
     onPointerUp: () => engine.releaseMomentary(key),
     onPointerLeave: () => engine.releaseMomentary(key),
     onPointerCancel: () => engine.releaseMomentary(key),
+    onBlur: () => engine.releaseMomentary(key),
+    onClick: (event: MouseEvent<HTMLButtonElement>) => {
+      // Keyboard and assistive technology activation fires click without pointer events.
+      if (event.detail === 0) {
+        engine.pressMomentary(key);
+        engine.releaseMomentary(key);
+      }
+    },
   });
 
   return (
@@ -34,15 +43,11 @@ export function LadderPage() {
           <div className="container">
             <h1>Ladder Logic Simulator</h1>
             <p>
-              This is a self-directed learning project, a browser-based simulator that models how a real
-              PLC evaluates ladder logic, translating the fault-interlock state machine from my{' '}
-              <a href="/#project">Raspberry Pi Pico trainer</a> into Allen-Bradley/RSLogix notation (XIC,
-              XIO, OTE), the North American industry standard for the equipment I&apos;d be working with in
-              a maintenance role.
+              This browser simulator models a PLC scan. It translates the fault and reset sequence from my{' '}
+              <a href="/#project">Raspberry Pi Pico trainer</a> into Allen-Bradley-style ladder logic.
             </p>
             <div className="sim-disclaimer">
-              <strong>What this is:</strong> a learning tool I built to understand ladder logic concepts,
-              not a certified, IEC 61131-3-compliant, or production PLC programming environment.
+              <strong>Practice simulator.</strong> Use it to explore ladder logic and simulated faults.
             </div>
           </div>
         </section>
@@ -50,8 +55,8 @@ export function LadderPage() {
         <section className="sim-panel">
           <div className="container">
             <div className={`status-banner ${banner.cls}`} id="status-banner">
-              <span className="status-dot" />
-              <div className="status-text">
+                <span className="status-dot" aria-hidden="true" />
+              <div className="status-text" role="status">
                 <strong>{banner.title}</strong>
                 <span>{banner.desc}</span>
               </div>
@@ -85,6 +90,7 @@ export function LadderPage() {
                   <button
                     className={`io-btn toggle-jam${snapshot.jamOn ? ' active' : ''}`}
                     disabled={!gate.jam}
+                    aria-pressed={snapshot.jamOn}
                     onClick={() => engine.toggleJam()}
                   >
                     <span className="io-dot" />

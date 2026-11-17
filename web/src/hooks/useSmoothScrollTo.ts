@@ -7,8 +7,9 @@ import { useCallback } from 'react';
 export function useSmoothScrollTo() {
   return useCallback((id: string) => (e: React.MouseEvent) => {
     const target = document.getElementById(id);
-    if (!target) return;
+    if (!target || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' });
   }, []);
 }

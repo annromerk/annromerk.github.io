@@ -17,6 +17,7 @@ export function DocToc() {
           href={`#${item.id}`}
           data-doc-target={item.id}
           className={activeId === item.id ? 'is-active' : undefined}
+          aria-current={activeId === item.id ? 'location' : undefined}
           onClick={scrollTo(item.id)}
         >
           {item.label}

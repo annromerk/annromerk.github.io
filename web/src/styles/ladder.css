@@ -1,6 +1,4 @@
-/* Ladder Logic Simulator page — extends tokens from css/style.css */
-
-.ladder-page .container { max-width: 1080px; }
+/* Ladder simulator uses the same container and design tokens as the portfolio. */
 
 .sim-header {
   padding: 28px 0 0;
@@ -44,7 +42,7 @@
   padding: 14px 18px;
   background: var(--accent-soft);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius);
   font-size: 0.88rem;
   color: var(--text-dim);
 }
@@ -76,7 +74,7 @@
   align-items: center;
   gap: 6px;
   padding: 12px 18px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--bg);
   cursor: pointer;
@@ -126,7 +124,7 @@
   align-items: center;
   gap: 10px;
   padding: 12px 20px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--bg);
   cursor: pointer;
