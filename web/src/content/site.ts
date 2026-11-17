@@ -172,7 +172,7 @@ export const certifications = [
     title: 'Amnesty Blitz',
     org: 'Amazon internal training for robotics floor cleanup and retrieval of dropped items',
   },
-  { title: 'NFTA', org: 'Amazon internal certification' },
+  { title: 'NFPA Electrical Cycle of Safety', org: 'Electrical safety training completed through Amazon' },
   { title: 'OSHA-10 Construction Safety and Health', org: 'Hope Builders' },
   {
     title: 'Heartsaver First Aid CPR AED',
@@ -204,7 +204,7 @@ export const faqs = [
   },
   {
     q: 'What robotics training have you completed?',
-    a: 'At Amazon, I earned internal certifications for **AR Robin Zones 1 & 2**, **Amnesty Blitz**, and **NFTA**. My personal projects focus on controls, including fault interlocks, ladder logic, and PLC scan cycles.',
+    a: 'At Amazon, I earned internal certifications for **AR Robin Zones 1 & 2** and **Amnesty Blitz**. My personal projects focus on controls, including fault interlocks, ladder logic, and PLC scan cycles.',
   },
   {
     q: 'How do I know these projects are actually yours?',
