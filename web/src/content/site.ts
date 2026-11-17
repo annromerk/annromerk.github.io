@@ -9,8 +9,7 @@ export const tocItems = [
 ] as const;
 
 export const aboutParagraphs = [
-  `I'm a Mechatronic Apprentice I with Amazon Reliability Maintenance & Engineering (RME). In delivery operations, I noticed packages overshooting their hampers and reported the conveyor wear I found. That experience got me interested in what causes equipment faults and how to catch them early.`,
-  `My apprenticeship focus is electrical and mechanical troubleshooting, preventive maintenance, and checking that equipment works as expected after a repair. On my own, I wired a Raspberry Pi Pico trainer and built a ladder logic simulator to practice how a simulated conveyor detects a jam, holds the fault, and resets.`,
+  `I started off in construction and Amazon delivery operations. I'm currently a Mechatronic Apprentice at Amazon RME, and I build projects around PLCs and conveyor controls. In the future, I want to become an Automation Engineer.`,
 ];
 
 export interface Recommendation {
