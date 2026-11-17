@@ -19,6 +19,7 @@ export interface Recommendation {
   role: string;
   context: string;
   avatarSrc?: string;
+  avatarFallback?: 'amazon';
 }
 
 export const recommendations: Recommendation[] = [
@@ -32,6 +33,7 @@ export const recommendations: Recommendation[] = [
   {
     quote: `"It was a pleasure being Anthony's supervisor at DCX8 Delivery Station. Throughout my time working with him, he consistently demonstrated initiative, reliability, a strong eagerness to learn, and adaptability. He brings a genuine teamwork mentality, while also proving he can take ownership of tasks independently and meet deadlines on his own. His strong communication skills allow him to convey and receive information clearly, accurately, and effectively. Given his drive to learn and grow, Anthony would be a valuable addition to any Mechatronic Apprentice team."`,
     name: 'Brenda Munguia',
+    avatarFallback: 'amazon',
     role: 'Learning Trainer, Amazon.com Services LLC',
     context: 'Former supervisor (Process Assistant) at DCX8 Delivery Station · Slack message',
   },
@@ -56,7 +58,6 @@ export const timeline: TimelineItem[] = [
     org: 'Amazon · Reliability Maintenance & Engineering',
     badge: { kind: 'amazon' },
     bullets: [
-      'Promoted from Amazon delivery station operations on September 27, 2026.',
       'Completed **NFPA 70E electrical safety training**, **AR Robin Zones 1 & 2**, and **Amnesty Blitz** through Amazon.',
     ],
   },

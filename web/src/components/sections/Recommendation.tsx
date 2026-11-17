@@ -1,4 +1,4 @@
-import { RecommendationIcon } from '@/components/icons';
+import { AmazonBadgeIcon, RecommendationIcon } from '@/components/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardDescription, CardFooter, CardTitle } from '@/components/ui/card';
 import { recommendations } from '@/content/site';
@@ -27,8 +27,10 @@ export function Recommendation() {
               <CardFooter className="testimonial-footer">
                 <Avatar className="testimonial-avatar">
                   {rec.avatarSrc && <AvatarImage src={rec.avatarSrc} alt={rec.name} />}
-                  <AvatarFallback className="bg-[var(--accent-soft)] text-[var(--accent-dark)] font-bold">
-                    {initials(rec.name)}
+                  <AvatarFallback className={rec.avatarFallback === 'amazon'
+                    ? 'border border-[var(--border)] bg-[var(--bg)] [&>svg]:size-7'
+                    : 'bg-[var(--accent-soft)] text-[var(--accent-dark)] font-bold'}>
+                    {rec.avatarFallback === 'amazon' ? <AmazonBadgeIcon /> : initials(rec.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div>
