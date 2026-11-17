@@ -1,8 +1,3 @@
-export const heroStats = [
-  { value: 4, suffix: '', label: 'Amazon Safe & Secure awards' },
-  { value: 2, suffix: '', label: 'Controls projects' },
-] as const;
-
 export const tocItems = [
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },

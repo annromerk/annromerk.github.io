@@ -1,6 +1,4 @@
 import { ContactRow } from '@/components/ContactRow';
-import { HeroStat } from '@/components/sections/HeroStat';
-import { heroStats } from '@/content/site';
 
 export function Hero() {
   return (
@@ -14,12 +12,6 @@ export function Hero() {
           With Amazon since <time dateTime="2024-11-06">November 6, 2024</time>
         </p>
         <ContactRow />
-
-        <ul className="hero-stats">
-          {heroStats.map((stat) => (
-            <HeroStat key={stat.label} {...stat} />
-          ))}
-        </ul>
       </div>
     </section>
   );
