@@ -172,7 +172,7 @@ export const certifications = [
     title: 'Amnesty Blitz',
     org: 'Amazon internal training for robotics floor cleanup and retrieval of dropped items',
   },
-  { title: 'NFPA Electrical Cycle of Safety', org: 'Electrical safety training completed through Amazon' },
+  { title: 'NFPA 70E Electrical Safety Training', org: 'Completed through Amazon' },
   { title: 'OSHA-10 Construction Safety and Health', org: 'Hope Builders' },
   {
     title: 'Heartsaver First Aid CPR AED',
