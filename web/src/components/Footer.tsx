@@ -15,7 +15,7 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
                 <MessageCircleIcon />
               </div>
               <CardTitle className="footer-cta-title">
-                Think I&apos;d be a good fit? I&apos;d love to talk.
+                Connect with me
               </CardTitle>
             </CardHeader>
             <CardContent className="footer-cta-content">

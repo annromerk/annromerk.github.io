@@ -7,8 +7,8 @@ export function Hero() {
     <section className="hero">
       <div className="container hero-inner">
         <h1>Anthony Romero</h1>
-        <p className="hero-tagline">Mechatronics &amp; Robotics Apprentice, Amazon RME</p>
-        <p className="hero-start-date">Starts August 27, 2026</p>
+        <p className="hero-tagline">Mechatronic Apprentice I, Amazon RME</p>
+        <p className="hero-start-date">Since September 27, 2026</p>
         <ContactRow />
 
         <ul className="hero-stats">

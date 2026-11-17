@@ -16,7 +16,7 @@ export const tocItems = [
 
 export const aboutParagraphs = [
   `I got my start in construction trades and warehouse work, and got good at catching problems early: a safety hazard, a worn part, a tool about to fail. That's what pulled me toward mechatronics.`,
-  `In 2026 I taught myself the basics and built a working fault-simulation trainer to prove I could take it from theory to actual hardware. That work paid off: I accepted a Mechatronics & Robotics Apprenticeship with Amazon RME and start August 27, 2026, learning under experienced RME technicians.`,
+  `I taught myself the basics of mechatronics and built a conveyor fault simulator with a Raspberry Pi Pico. On September 27, 2026, I moved from Amazon delivery operations into Reliability Maintenance & Engineering (RME) as a Mechatronic Apprentice I.`,
   `Longer term, my goal is to grow from MRA into an Automation Engineer Apprentice (AEA) role within Amazon RME.`,
 ];
 
@@ -58,7 +58,14 @@ export interface TimelineItem {
 
 export const timeline: TimelineItem[] = [
   {
-    date: 'Nov 2024 – Present',
+    date: 'Sep 2026 – Present',
+    title: 'Mechatronic Apprentice I',
+    org: 'Amazon · Reliability Maintenance & Engineering',
+    badge: { kind: 'amazon' },
+    bullets: ['Promoted from Amazon delivery station operations on September 27, 2026.'],
+  },
+  {
+    date: 'Nov 2024 – Sep 2026',
     title: 'Warehouse Associate',
     titleDim: '(Seasonal to Regular)',
     org: 'Amazon.com Services LLC',
@@ -175,10 +182,6 @@ export const certifications = [
 
 export const faqs = [
   {
-    q: 'Are you willing to relocate for this role?',
-    a: "Yes. I've been working toward a transfer into RME and have **saved up to self-fund the move**, so relocation and the training program aren't a barrier.",
-  },
-  {
     q: 'Have you completed the Mechanical Aptitude Test for this program?',
     a: "Yes. I've already **taken and passed the Mechanical Aptitude Test** through OnDemand Assessment as part of this hiring process.",
   },
@@ -203,8 +206,8 @@ export const faqs = [
     a: 'Yes. Hope Builders required **basic math and algebra** just to qualify for the program, and **Construction Math** was part of the curriculum alongside blueprint reading and framing.',
   },
   {
-    q: 'When do you start?',
-    a: '**August 27, 2026.** I accepted the offer and I’m looking forward to getting started as a Mechatronics & Robotics Apprentice with Amazon RME.',
+    q: 'When did you join Amazon RME?',
+    a: 'I started as a **Mechatronic Apprentice I** on **September 27, 2026**, after working in Amazon delivery station operations.',
   },
   {
     q: 'Can you provide references?',
