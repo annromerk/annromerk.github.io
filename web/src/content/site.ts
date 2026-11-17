@@ -9,8 +9,8 @@ export const tocItems = [
 ] as const;
 
 export const aboutParagraphs = [
-  `I moved from Amazon delivery operations into Reliability Maintenance & Engineering (RME) in September 2026. My background includes inspecting tools, reading construction drawings, and reporting conveyor wear and safety hazards on the warehouse floor.`,
-  `I'm building experience in electrical and mechanical troubleshooting, preventive maintenance, and verifying equipment after a repair. To practice controls on my own, I built a Raspberry Pi Pico conveyor fault trainer and a PLC ladder logic simulator.`,
+  `I'm a Mechatronic Apprentice I with Amazon Reliability Maintenance & Engineering (RME). In delivery operations, I noticed packages overshooting their hampers and reported the conveyor wear I found. That experience got me interested in what causes equipment faults and how to catch them early.`,
+  `My apprenticeship focus is electrical and mechanical troubleshooting, preventive maintenance, and checking that equipment works as expected after a repair. On my own, I wired a Raspberry Pi Pico trainer and built a ladder logic simulator to practice how a simulated conveyor detects a jam, holds the fault, and resets.`,
 ];
 
 export interface Recommendation {
